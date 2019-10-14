@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}Logout{% endblock %}
+
+{% block body %}
+{% if request.user.is_authenticated %}
+    <p class="header">Do you want to logout ?</p>
+    <!-- <p class="lead">To create a new user you must logout.</p> -->
+    <form class="form" action="{% url 'accounts:logout' %}">
+        <button type="submit" class='btn mr-2'>Yes</button>
+        <a href="{% url 'accounts:index' %}" class='btn btn-outline-secondary follow-btn'>No</a>
+    </form>
+{% else %}
+    <p class="header">Do you want to <a href="{% url 'accounts:login'%}">login</a> ?</p>
+{% endif %}
+{% endblock %}
