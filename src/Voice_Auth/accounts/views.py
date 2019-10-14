@@ -14,7 +14,10 @@ from gtts import gTTS
 import os
 import random
 import time
+from google.cloud import texttospeech
+from google.cloud import translate
 
+client = texttospeech.TextToSpeechClient()
 # Create your views here.
 
 
@@ -54,11 +57,17 @@ class ResponseBot:
     # def verifyResponse()
 
     def deliverResponse(self, text, index):
-        language = 'en'
-        myobj = gTTS(text=text, lang=language, slow=False)
-        myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
+        # language = 'en'
+        # myobj = gTTS(text=text, lang=language, slow=False)
+        # myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
         print(settings.MEDIA_ROOT)
         # os.startfile(settings.MEDIA_ROOT+'1.mp3')
+        synthesis_input = texttospeech.types.SynthesisInput(text=text)
+        voice = texttospeech.types.VoiceSelectionParams(language_code='en-IN',ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
+        audio_config = texttospeech.types.AudioConfig(audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+        response = client.synthesize_speech(synthesis_input, voice, audio_config)
+        with open(settings.MEDIA_ROOT + '/output.mp3', 'wb') as out:
+            out.write(response.audio_content)
         return 'http://127.0.0.1:8000' + settings.MEDIA_URL + 'output'+str(index)+'.mp3'
 
 
