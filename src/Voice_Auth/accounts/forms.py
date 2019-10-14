@@ -11,40 +11,6 @@ import random
 import time
 
 
-class ResponseBot:
-
-    def __init__(self):
-        print('Bot Created')
-
-    def askQuestion(self, questions):
-        index = random.randint(1, 5)
-        print(questions[index])
-        return index
-
-    def verifyResponse(self, answers, response, index):
-        for i in answers[index]:
-            if i in response:
-                return True
-        return False
-
-    def getResponse(self):
-        r = sr.Recognizer()
-#         print(sr.Microphone.list_microphone_names())
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source, duration=1)
-        # r.energy_threshold()
-            print("Please answer in 1 word or a phrase : ")
-            audio = r.listen(source, timeout=2, phrase_time_limit=6)
-            try:
-                text = r.recognize_google(audio)
-                print("You answered '"+text+"'")
-            except:
-                text = "sorry, could not recognise"
-                print("sorry, could not recognise")
-
-        return text.lower()
-
-
 class UserLoginForm(AuthenticationForm):
     answer1 = forms.CharField(label='Answer1')
     answer2 = forms.CharField(label='Answer2')
@@ -53,7 +19,6 @@ class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         un = kwargs.pop('username', None)
         # print(self.kwargs.get('username'))
-        bot = ResponseBot()
         # self.answer1 = bot.getResponse()
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
