@@ -15,7 +15,6 @@ import os
 import random
 import time
 from google.cloud import texttospeech
-from google.cloud import translate
 
 client = texttospeech.TextToSpeechClient()
 # Create your views here.
@@ -24,6 +23,8 @@ client = texttospeech.TextToSpeechClient()
 class ResponseBot:
 
     def __init__(self):
+        # credential_path = "D:\BE\Final Year Project\all_work\src\Voice_Auth\cred.json"
+        # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
         print('Bot Created')
 
     def askQuestion(self, questions):
@@ -63,10 +64,12 @@ class ResponseBot:
         print(settings.MEDIA_ROOT)
         # os.startfile(settings.MEDIA_ROOT+'1.mp3')
         synthesis_input = texttospeech.types.SynthesisInput(text=text)
-        voice = texttospeech.types.VoiceSelectionParams(language_code='en-IN',ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
-        audio_config = texttospeech.types.AudioConfig(audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+        voice = texttospeech.types.VoiceSelectionParams(
+            language_code='en-IN', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
+        audio_config = texttospeech.types.AudioConfig(
+            audio_encoding=texttospeech.enums.AudioEncoding.MP3)
         response = client.synthesize_speech(synthesis_input, voice, audio_config)
-        with open(settings.MEDIA_ROOT + '/output.mp3', 'wb') as out:
+        with open(settings.MEDIA_ROOT + '/output'+str(index)+'.mp3', 'wb') as out:
             out.write(response.audio_content)
         return 'http://127.0.0.1:8000' + settings.MEDIA_URL + 'output'+str(index)+'.mp3'
 
@@ -113,6 +116,8 @@ class LoginView(FormView):
         bot = ResponseBot()
         q1 = Question.objects.get(question=user.question1)
         q2 = Question.objects.get(question=user.question2)
+        print(q1.pk)
+        print(q2.pk)
         # response = bot.getResponse()
         # print(response)
         link1 = bot.deliverResponse(q1.question, 1)
