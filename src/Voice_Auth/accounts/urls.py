@@ -13,5 +13,4 @@ urlpatterns = [
     path('enter/', views.UnView.as_view(), name="enter-usr"),
     path('logout/', views.LogoutView, name="logout"),
     path('logout-page/', views.LogoutPage.as_view(), name="logout_page"),
-    path('stt/', views.SttView.as_view(), name="stt"),
 ]

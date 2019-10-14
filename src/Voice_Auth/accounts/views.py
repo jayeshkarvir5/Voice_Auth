@@ -68,16 +68,6 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('accounts:index')
 
 
-class SttView(TemplateView):
-    template_name = 'accounts/stt.html'
-
-
-def stt(request):
-    bot = ResponseBot()
-    request.session['response'] = bot.getResponse()
-    return JsonResponse({'status': 'ok'})
-
-
 class UnView(FormView):
     form_class = UsernameForm
     template_name = 'accounts/enter-un.html'
