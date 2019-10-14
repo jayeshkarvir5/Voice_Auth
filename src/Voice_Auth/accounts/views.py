@@ -116,10 +116,10 @@ class LoginView(FormView):
         q2 = Question.objects.get(question=user.question2)
         # response = bot.getResponse()
         # print(response)
-        # link1 = bot.deliverResponse(q1.question, 1)
-        # link2 = bot.deliverResponse(q2.question, 2)
-        # context['link1'] = link1
-        # context['link2'] = link2
+        link1 = bot.deliverResponse(q1.question, 1)
+        link2 = bot.deliverResponse(q2.question, 2)
+        context['link1'] = link1
+        context['link2'] = link2
         return context
 
 
