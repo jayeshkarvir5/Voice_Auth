@@ -1,3 +1,4 @@
+{% load i18n %}
 var SpeechRecognition = window.webkitSpeechRecognition;
 
 var recognition = new SpeechRecognition();
@@ -6,10 +7,15 @@ var Textbox1 = $('#ans1');
 var Textbox2 = $('#ans2');
 var instructions = $('instructions');
 
+var flagl = 1;
+{% get_current_language as langcode %}
+{% if "hi" in langcode %}
+    flagl = 1;
+{% else %}
+    flagl =0;
+{% endif %}
 
-var flag = 1;
-
-if(flag===1){
+if(flagl==1){
   recognition.lang = 'hi';
 }
 
@@ -61,7 +67,6 @@ $('#start-btn2').on('click', function(e) {
   }
   recognition.start();
 });
-
 Textbox1.on('input', function() {
   Content = $(this).val();
 })

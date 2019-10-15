@@ -4,15 +4,24 @@
 {% block body %}
 <div class="card" >
    <div class="card-body">
-     <h4 class="card-title text-center">Enter your Username to Proceed to Login</h4><br />
+     <h4 class="card-title text-center">{% trans 'Enter your Username to Proceed to Login'%}</h4><br />
      {% if error_message %}
-      <p>{{ error_message }}</p>
+      <p>{% blocktrans %}{{ error_message }}{% endblocktrans %}</p>
       {%endif%}
      <form method="post" enctype="multipart/form-data">
        {% csrf_token %}
-       {{ form|crispy }}
+       <!-- {{ form|crispy }} -->
+       {% if form.username.errors%}
+       <div class="alert alert-danger">
+           <strong>{{ form.username.errors|escape }}</strong>
+       </div>
+       {% endif %}
+       <div class="form-group iclass">
+           <label class="iclass" for="un">{% trans 'Username' %}</label>
+           <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="e.g. abc123" type="text"/>
+       </div>
        <div class="form-group text-center">
-           <button type="submit" class="btn submit-btn">Submit</button>
+           <button type="submit" class="btn submit-btn">{% trans 'Submit' %}</button>
        </div>
      </form>
    </div>

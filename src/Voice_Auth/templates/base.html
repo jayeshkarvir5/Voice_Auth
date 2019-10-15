@@ -20,6 +20,23 @@
     <div class="container container-fluid">
     {% block body %}{% endblock %}
     </div>
+    <form class="corner-form" action ="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+     <input type="hidden" name="next" value="{{ redirect_to }}">
+     <div class="form-group">
+        <label for="FormControlSelect1">{% trans 'Select language' %}</label>
+         <select class="form-control form-control-sm col-sm-12" id="FormControlSelect1" name="language" >
+             {% get_available_languages as langs %}
+             {% get_language_info_list for langs as languages %}
+             {% for l in languages %}
+             <option value="{{ l.code }}" {% if l.code == LANGUAGE_CODE %} selected {% endif %}>
+                 {{ l.name}} ({{ l.code }})
+             </option>
+             {% endfor %}
+         </select>
+     </div>
+     <button class='btn btn-sm btn-outline-secondary follow-btn' id="translate" type="submit" />{% trans 'Translate' %}</button>
+        </form>
     {% include 'snippets/js.html' %}
     <script>{% include 'snippets/script.js' %}</script>
 </body>

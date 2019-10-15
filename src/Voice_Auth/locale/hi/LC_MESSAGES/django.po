@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 23:38+0530\n"
+"POT-Creation-Date: 2019-10-15 16:06+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,25 +19,76 @@ msgstr ""
 
 #: .\Voice_Auth\settings.py:121
 msgid "English"
-msgstr "अंग्रेज़ी"
+msgstr ""
 
 #: .\Voice_Auth\settings.py:122
 msgid "Hindi"
-msgstr "हिंदी"
+msgstr ""
+
+#: .\accounts\templates\accounts\enter-un.html:7
+msgid "Enter your Username to Proceed to Login"
+msgstr ""
+
+#: .\accounts\templates\accounts\enter-un.html:9
+#, python-format
+msgid "%(error_message)s"
+msgstr ""
+
+#: .\accounts\templates\accounts\enter-un.html:20
+#: .\accounts\templates\accounts\index.html:4
+#: .\templates\registration\login.html:30
+msgid "Username"
+msgstr ""
+
+#: .\accounts\templates\accounts\enter-un.html:24
+msgid "Submit"
+msgstr ""
 
 #: .\accounts\templates\accounts\index.html:6
 msgid "Index"
-msgstr "सूची"
+msgstr ""
 
-#: .\accounts\templates\accounts\index.html:9
+#: .\accounts\templates\accounts\index.html:8
 msgid "To logout click"
-msgstr "क्लिक प्रस्थान करना"
+msgstr ""
 
-#: .\accounts\templates\accounts\index.html:9
-#: .\accounts\templates\accounts\index.html:12
+#: .\accounts\templates\accounts\index.html:8
+#: .\accounts\templates\accounts\index.html:11
 msgid "here"
-msgstr "यहाँ"
+msgstr ""
 
-#: .\accounts\templates\accounts\index.html:12
+#: .\accounts\templates\accounts\index.html:11
 msgid "To login click"
-msgstr "प्रवेश करने के लिए क्लिक करें"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:4
+msgid "Logout"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:8
+msgid "Do you want to logout ?"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:11
+msgid "Yes"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:12
+msgid "No"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:15
+msgid "Do you want to"
+msgstr ""
+
+#: .\accounts\templates\accounts\logout-page.html:15
+msgid "login"
+msgstr ""
+
+#: .\templates\base.html:27
+msgid "Select language"
+msgstr ""
+
+#: .\templates\base.html:38
+msgid "Translate"
+msgstr ""

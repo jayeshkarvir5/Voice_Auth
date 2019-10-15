@@ -27,7 +27,7 @@
                 {%endfor%}
         {% endif %}
        <div class="form-group iclass">
-           <label class="iclass" for="un">{{ form.username.label_tag }}</label>
+           <label class="iclass" for="un">{% trans 'Username' %}</label>
            <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="" type="text" value="{{user.username}}"/>
        </div>
        <div class="form-group iclass">

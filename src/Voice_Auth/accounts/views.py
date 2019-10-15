@@ -16,18 +16,18 @@ import random
 import time
 from google.cloud import texttospeech
 from google.cloud import translate
+from django.utils import translation
+
 
 translate_client = translate.Client()
 client = texttospeech.TextToSpeechClient()
-# Create your views here.
 # Flag = 1 for Hindi
 flag = 1
+
 
 class ResponseBot:
 
     def __init__(self):
-        # credential_path = "D:\BE\Final Year Project\all_work\src\Voice_Auth\cred.json"
-        # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
         print('Bot Created')
 
     def askQuestion(self, questions):
@@ -58,24 +58,22 @@ class ResponseBot:
 
         return text.lower()
 
-    # def verifyResponse()
-
-    def deliverResponse(self, text, index,flag):
+    def deliverResponse(self, text, index, flag):
         # language = 'en'
         # myobj = gTTS(text=text, lang=language, slow=False)
         # myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
         print(settings.MEDIA_ROOT)
         # os.startfile(settings.MEDIA_ROOT+'1.mp3')
-        
+
         # For Hindi
         if flag == 1:
-            translation = translate_client.translate(text,target_language='hi')
+            translation = translate_client.translate(text, target_language='hi')
             text = translation['translatedText']
             print(translation['translatedText'])
-            
+
             synthesis_input = texttospeech.types.SynthesisInput(text=text)
             voice = texttospeech.types.VoiceSelectionParams(
-                language_code='hi',ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
+                language_code='hi', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
             audio_config = texttospeech.types.AudioConfig(
                 audio_encoding=texttospeech.enums.AudioEncoding.MP3)
             response = client.synthesize_speech(synthesis_input, voice, audio_config)
@@ -126,7 +124,10 @@ class LoginView(FormView):
         return super(LoginView, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
-        print(i18n_patterns)
+        if translation.get_language() == "en":
+            flag = 0
+        else:
+            flag = 1
         context = super(LoginView, self).get_context_data(*args, **kwargs)
         username = self.kwargs.get('username')
         user = Account.objects.get(username=username)
@@ -138,8 +139,8 @@ class LoginView(FormView):
         print(q2.pk)
         # response = bot.getResponse()
         # print(response)
-        link1 = bot.deliverResponse(q1.question, 1,flag)
-        link2 = bot.deliverResponse(q2.question, 2,flag)
+        link1 = bot.deliverResponse(q1.question, 1, flag)
+        link2 = bot.deliverResponse(q2.question, 2, flag)
         context['link1'] = link1
         context['link2'] = link2
         return context
