@@ -6,6 +6,13 @@ var Textbox1 = $('#ans1');
 var Textbox2 = $('#ans2');
 var instructions = $('instructions');
 
+
+var flag = 1;
+
+if(flag===1){
+  recognition.lang = 'hi';
+}
+
 var Content = '';
 var flag = 0;
 recognition.continuous = true;

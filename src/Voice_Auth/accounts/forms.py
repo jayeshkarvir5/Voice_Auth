@@ -9,7 +9,13 @@ from gtts import gTTS
 import os
 import random
 import time
+from google.cloud import translate
 
+
+translate_client = translate.Client()
+
+# For Hindi flag = 1
+flag = 1
 
 class UserLoginForm(AuthenticationForm):
     answer1 = forms.CharField(label='Answer1')
@@ -43,6 +49,16 @@ class UserLoginForm(AuthenticationForm):
         # raise forms.ValidationError("Incorrect Question")
         print(a1)
         print(a2)
+
+        # Translate to English if Hindi Output
+        if flag == 1:
+            translation1 = translate_client.translate(a1,target_language='en')
+            translation2 = translate_client.translate(a2,target_language='en')
+            a1 = translation1['translatedText']
+            a2 = translation2['translatedText']
+            print("Translated Text: {} {} ".format(a1,a2))
+
+
         if a1 == None or a2 == None:
             raise forms.ValidationError("Incorrect response")
         flag1 = 0

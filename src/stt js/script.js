@@ -2,7 +2,12 @@
 var SpeechRecognition = window.webkitSpeechRecognition;
 
 var recognition = new SpeechRecognition();
+var flag = 1
+// if(flag === 1){
+//   recognition.lang = 'hi-';
+// }
 
+recognition.lang = 'hi';
 var Textbox = $('#ans1');
 var instructions = $('instructions');
 
