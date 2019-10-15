@@ -43,14 +43,14 @@ recognition.onerror = function(event) {
 $('#start-btn1').on('click', function(e) {
     flag=0;
   if (Content.length) {
-    Content = ' ';
+    Content = '';
   }
   recognition.start();
 });
 $('#start-btn2').on('click', function(e) {
    flag=1;
   if (Content.length) {
-    Content = ' ';
+    Content = '';
   }
   recognition.start();
 });

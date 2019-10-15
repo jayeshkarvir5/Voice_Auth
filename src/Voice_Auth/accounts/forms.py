@@ -47,13 +47,10 @@ class UserLoginForm(AuthenticationForm):
             raise forms.ValidationError("Incorrect response")
         flag1 = 0
         flag2 = 0
-        for user.answer1 in a1:
+        if user.answer1 in a1:
             flag1 = 1
-            break
-            print("1yes")
-        for user.answer2 in a2:
+        if user.answer2 in a2:
             flag2 = 1
-            break
         if flag1 != 1 or flag2 != 1:
             raise forms.ValidationError("Incorrect response")
         return super(UserLoginForm, self).clean(*args, **kwargs)

@@ -1,5 +1,6 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang={{ LANGUAGE_CODE }}>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
     <meta charset="UTF-8">
@@ -13,10 +14,10 @@
 
     <title>{% block title %}Voice_Auth{% endblock %}</title>
     {% include 'snippets/css.html' %}
+
 </head>
 <body>
     <div class="container container-fluid">
-
     {% block body %}{% endblock %}
     </div>
     {% include 'snippets/js.html' %}
