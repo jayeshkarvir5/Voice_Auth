@@ -21,12 +21,10 @@ if(flagl==1){
 
 var Content = '';
 var flag = 0;
-recognition.continuous = true;
+recognition.continuous = false;
 
 recognition.onresult = function(event) {
-
   var current = event.resultIndex;
-
   var transcript = event.results[current][0].transcript;
 
     Content += transcript;
@@ -35,8 +33,6 @@ recognition.onresult = function(event) {
     }else{
         Textbox2.val(Content);
     }
-
-
 };
 
 recognition.onstart = function() {
