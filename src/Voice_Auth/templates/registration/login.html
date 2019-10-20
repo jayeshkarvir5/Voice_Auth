@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block title %}{% trans 'Login' %}{% endblock %}
 {% load crispy_forms_tags %}
 {% block body %}
+{% if request.user.is_authenticated %}
+    <h4 class="text-center">{% trans 'Login Page' %}</h4>
+    <p class="lead">{% trans 'You need to logout to access this page.' %}</p><br>
+    <p class="lead"> {% trans 'To logout click' %} <a href="{% url 'accounts:logout_page' %}">{% trans 'here'%}</a>.</p>
+{% else %}
 <div class="card" >
    <div class="card-body">
      <h4 class="card-title text-center">{% trans 'Login' %}</h4><br />
@@ -64,5 +70,5 @@
      </form>
    </div>
  </div>
-
+{%endif%}
 {%endblock%}

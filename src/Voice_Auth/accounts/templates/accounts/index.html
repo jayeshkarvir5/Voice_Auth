@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans 'Username' %}{% endblock %}
+{% block title %}{% trans 'Index' %}{% endblock %}
 {% block body %}
-<h3>{% trans "Index" %}</h3>
+<h4 class="text-center">{% trans "Index" %}</h4>
 {% if request.user.is_authenticated %}
 <p class="lead"> {% trans 'To logout click' %} <a href="{% url 'accounts:logout_page' %}">{% trans 'here'%}</a>.</p>
 
 {% else %}
-<p class="lead">{% trans 'To login click' %} <a href="{% url 'accounts:enter-usr' %}">{% trans 'here'%}</a>.</p>
+<p class="lead">{% trans 'Already have an account? ' %} <a href="{% url 'accounts:enter-un' %}">{% trans 'Login'%}</a>.</p>
+<p class="lead">{% trans 'First time user? ' %} <a href="{% url 'accounts:register' %}">{% trans 'Register' %}</a>.</p>
 {% endif %}
 
 {% endblock %}

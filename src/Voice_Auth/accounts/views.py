@@ -22,7 +22,6 @@ from django.utils import translation
 translate_client = translate.Client()
 client = texttospeech.TextToSpeechClient()
 # Flag = 1 for Hindi
-flag = 1
 
 
 class ResponseBot:
@@ -59,31 +58,19 @@ class ResponseBot:
         return text.lower()
 
     def deliverResponse(self, text, index, flag, host):
-        # language = 'en'
-        # myobj = gTTS(text=text, lang=language, slow=False)
-        # myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
         print(settings.MEDIA_ROOT)
         # os.startfile(settings.MEDIA_ROOT+'1.mp3')
-
+        print(text)
         # For Hindi
+        lang_code = 'en-IN'
         if flag == 1:
-            translation = translate_client.translate(text, target_language='hi')
-            text = translation['translatedText']
-            print(translation['translatedText'])
-
-            synthesis_input = texttospeech.types.SynthesisInput(text=text)
-            voice = texttospeech.types.VoiceSelectionParams(
-                language_code='hi', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
-            audio_config = texttospeech.types.AudioConfig(
-                audio_encoding=texttospeech.enums.AudioEncoding.MP3)
-            response = client.synthesize_speech(synthesis_input, voice, audio_config)
-        else:
-            synthesis_input = texttospeech.types.SynthesisInput(text=text)
-            voice = texttospeech.types.VoiceSelectionParams(
-                language_code='en-IN', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
-            audio_config = texttospeech.types.AudioConfig(
-                audio_encoding=texttospeech.enums.AudioEncoding.MP3)
-            response = client.synthesize_speech(synthesis_input, voice, audio_config)
+            lang_code = 'hi'
+        synthesis_input = texttospeech.types.SynthesisInput(text=text)
+        voice = texttospeech.types.VoiceSelectionParams(
+            language_code=lang_code, ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
+        audio_config = texttospeech.types.AudioConfig(
+            audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+        response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
         with open(settings.MEDIA_ROOT + '/output'+str(index)+'.mp3', 'wb') as out:
             out.write(response.audio_content)
@@ -93,7 +80,7 @@ class ResponseBot:
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('accounts:index')
+    success_url = reverse_lazy('index')
 
 
 class UnView(FormView):
@@ -109,11 +96,11 @@ class UnView(FormView):
 
 def LogoutView(request):
     logout(request)
-    return redirect('/accounts/index/')
+    return redirect('/')
 
 
 class LoginView(FormView):
-    success_url = reverse_lazy('accounts:index')
+    success_url = reverse_lazy('index')
     template_name = "registration/login.html"
     form_class = UserLoginForm
 

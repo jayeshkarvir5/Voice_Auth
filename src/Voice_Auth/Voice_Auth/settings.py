@@ -115,8 +115,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'accounts.Account'
 
-LOGOUT_REDIRECT_URL = '/accounts/index/'
-LOGIN_REDIRECT_URL = '/accounts/index/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 LANGUAGE_CODE = 'en'
 LANGUAGES = (

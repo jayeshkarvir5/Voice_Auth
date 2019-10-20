@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 16:56+0530\n"
+"POT-Creation-Date: 2019-10-20 19:59+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\Voice_Auth\settings.py:122
+#: .\Voice_Auth\settings.py:123
 msgid "English"
 msgstr "अंग्रेज़ी"
 
-#: .\Voice_Auth\settings.py:123
+#: .\Voice_Auth\settings.py:124
 msgid "Hindi"
 msgstr "हिंदी"
 
 #: .\accounts\forms.py:23 .\accounts\forms.py:77 .\accounts\forms.py:107
-#: .\accounts\templates\accounts\index.html:4
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
@@ -62,11 +61,11 @@ msgstr "पासवर्ड की पुष्टि कीजिये"
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:109 .\templates\registration\login.html:8
+#: .\accounts\forms.py:109 .\templates\registration\login.html:14
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:110 .\templates\registration\login.html:13
+#: .\accounts\forms.py:110 .\templates\registration\login.html:19
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
@@ -86,64 +85,98 @@ msgstr "पासवर्ड मेल नहीं खाते"
 msgid "Please select 2 different questions"
 msgstr "2 अलग अलग सवाल का चयन करें"
 
-#: .\accounts\models.py:10
-#, fuzzy
-#| msgid "Question 1"
-msgid "question"
-msgstr "प्रश्न 1"
-
 #: .\accounts\models.py:52
 msgid ""
 "Username must be Alpahnumeric or contain any of the following: \". @ + -\" "
 msgstr ""
+"उपयोगकर्ता नाम अल्पाहारी होना चाहिए या निम्नलिखित में से कोई भी शामिल होना चाहिए: \"। @ + "
+"-\""
+
+#: .\accounts\templates\accounts\enter-un.html:3
+msgid "Enter-Username"
+msgstr "उपयोगकर्ता नाम दर्ज करें"
 
 #: .\accounts\templates\accounts\enter-un.html:7
+#: .\accounts\templates\accounts\enter-un.html:13
 msgid "Enter your Username to Proceed to Login"
 msgstr "लॉगिन के लिए आगे बढ़ें करने के लिए अपने उपयोगकर्ता नाम दर्ज"
 
-#: .\accounts\templates\accounts\enter-un.html:31
-#: .\templates\registration\register.html:77
+#: .\accounts\templates\accounts\enter-un.html:8
+#: .\templates\registration\login.html:8
+#: .\templates\registration\register.html:8
+msgid "You need to logout to access this page."
+msgstr "इस पृष्ठ पर पहुंचने के लिए लॉग आउट करने की जरूरत है।"
+
+#: .\accounts\templates\accounts\enter-un.html:9
+#: .\accounts\templates\accounts\index.html:8
+#: .\templates\registration\login.html:9
+#: .\templates\registration\register.html:9
+msgid "To logout click"
+msgstr "क्लिक प्रस्थान करना"
+
+#: .\accounts\templates\accounts\enter-un.html:9
+#: .\accounts\templates\accounts\index.html:8
+#: .\templates\registration\login.html:9
+#: .\templates\registration\register.html:9
+msgid "here"
+msgstr "यहाँ"
+
+#: .\accounts\templates\accounts\enter-un.html:37
+#: .\templates\registration\register.html:83
 msgid "Submit"
 msgstr "प्रस्तुत"
 
+#: .\accounts\templates\accounts\index.html:4
 #: .\accounts\templates\accounts\index.html:6
 msgid "Index"
 msgstr "सूची"
 
-#: .\accounts\templates\accounts\index.html:8
-msgid "To logout click"
-msgstr "क्लिक प्रस्थान करना"
-
-#: .\accounts\templates\accounts\index.html:8
 #: .\accounts\templates\accounts\index.html:11
-msgid "here"
-msgstr "यहाँ"
+msgid "Already have an account? "
+msgstr "क्या आपके पास पहले से एक खाता मौजूद है?"
 
 #: .\accounts\templates\accounts\index.html:11
-msgid "To login click"
-msgstr "प्रवेश करने के लिए क्लिक करें"
+#: .\templates\registration\login.html:3
+#: .\templates\registration\login.html:13
+#: .\templates\registration\login.html:67
+msgid "Login"
+msgstr "लॉग इन करें"
+
+#: .\accounts\templates\accounts\index.html:12
+msgid "First time user? "
+msgstr "पहली बार उपयोगकर्ता हैं?"
+
+#: .\accounts\templates\accounts\index.html:12
+#: .\templates\registration\register.html:3
+#: .\templates\registration\register.html:13
+msgid "Register"
+msgstr "रजिस्टर करें"
 
 #: .\accounts\templates\accounts\logout-page.html:4
 msgid "Logout"
 msgstr "लॉग आउट"
 
-#: .\accounts\templates\accounts\logout-page.html:8
+#: .\accounts\templates\accounts\logout-page.html:7
+msgid "Logout Page"
+msgstr "लॉगआउट पृष्ठ"
+
+#: .\accounts\templates\accounts\logout-page.html:9
 msgid "Do you want to logout ?"
 msgstr "आपको लॉगआउट करना चाहते हैं?"
 
-#: .\accounts\templates\accounts\logout-page.html:11
+#: .\accounts\templates\accounts\logout-page.html:12
 msgid "Yes"
 msgstr "हाँ"
 
-#: .\accounts\templates\accounts\logout-page.html:12
+#: .\accounts\templates\accounts\logout-page.html:13
 msgid "No"
 msgstr "नहीं"
 
-#: .\accounts\templates\accounts\logout-page.html:15
+#: .\accounts\templates\accounts\logout-page.html:16
 msgid "Do you want to"
 msgstr "क्या आप करना यह चाहते हैं"
 
-#: .\accounts\templates\accounts\logout-page.html:15
+#: .\accounts\templates\accounts\logout-page.html:16
 msgid "login"
 msgstr "लॉग इन करें"
 
@@ -156,21 +189,20 @@ msgid "Translate"
 msgstr "अनुवाद करना"
 
 #: .\templates\registration\login.html:7
-#: .\templates\registration\login.html:61
-msgid "Login"
-msgstr "लॉग इन करें"
+msgid "Login Page"
+msgstr "लॉगिन वाला पन्ना"
 
-#: .\templates\registration\login.html:11
+#: .\templates\registration\login.html:17
 msgid "Your browser does not support the audio element."
 msgstr "आपका ब्राउजर में ऑडियो तत्व समर्थित नहीं है।"
 
-#: .\templates\registration\login.html:36
-#: .\templates\registration\login.html:48
-#: .\templates\registration\register.html:43
-#: .\templates\registration\register.html:55
+#: .\templates\registration\login.html:42
+#: .\templates\registration\login.html:54
+#: .\templates\registration\register.html:49
+#: .\templates\registration\register.html:61
 msgid "Record"
 msgstr "अभिलेख"
 
 #: .\templates\registration\register.html:7
-msgid "Register"
-msgstr "रजिस्टर करें"
+msgid "Registration Page"
+msgstr "पंजीकरण पृष्ठ"

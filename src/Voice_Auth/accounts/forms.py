@@ -58,8 +58,8 @@ class UserLoginForm(AuthenticationForm):
         if flag == 1:
             translation1 = translate_client.translate(a1, target_language='en')
             translation2 = translate_client.translate(a2, target_language='en')
-            a1 = translation1['translatedText']
-            a2 = translation2['translatedText']
+            # a1 = translation1['translatedText']
+            # a2 = translation2['translatedText']
             print("Translated Text: {} {} ".format(a1, a2))
 
         flag1 = 0
