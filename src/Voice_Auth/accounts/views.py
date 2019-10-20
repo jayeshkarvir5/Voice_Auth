@@ -58,7 +58,7 @@ class ResponseBot:
 
         return text.lower()
 
-    def deliverResponse(self, text, index, flag):
+    def deliverResponse(self, text, index, flag, host):
         # language = 'en'
         # myobj = gTTS(text=text, lang=language, slow=False)
         # myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
@@ -87,7 +87,7 @@ class ResponseBot:
 
         with open(settings.MEDIA_ROOT + '/output'+str(index)+'.mp3', 'wb') as out:
             out.write(response.audio_content)
-        return 'http://127.0.0.1:8000' + settings.MEDIA_URL + 'output'+str(index)+'.mp3'
+        return 'http://' + host + settings.MEDIA_URL + 'output'+str(index)+'.mp3'
 
 
 class RegisterView(CreateView):
@@ -124,6 +124,7 @@ class LoginView(FormView):
         return super(LoginView, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
+        print(self.request.get_host())
         if translation.get_language() == "en":
             flag = 0
         else:
@@ -139,8 +140,9 @@ class LoginView(FormView):
         print(q2.pk)
         # response = bot.getResponse()
         # print(response)
-        link1 = bot.deliverResponse(q1.question, 1, flag)
-        link2 = bot.deliverResponse(q2.question, 2, flag)
+        host = self.request.get_host()
+        link1 = bot.deliverResponse(q1.question, 1, flag, host)
+        link2 = bot.deliverResponse(q2.question, 2, flag, host)
         context['link1'] = link1
         context['link2'] = link2
         return context
