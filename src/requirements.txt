@@ -13,3 +13,4 @@ SpeechRecognition==3.8.1
 google-cloud-texttospeech
 google-cloud-translate
 django-autotranslate
+django-modeltranslation==0.13.3

@@ -6,7 +6,7 @@
    <div class="card-body">
      <h4 class="card-title text-center">{% trans 'Enter your Username to Proceed to Login'%}</h4><br />
      {% if error_message %}
-      <p>{% blocktrans %}{{ error_message }}{% endblocktrans %}</p>
+      <p>{{ error_message }}</p>
       {%endif%}
       {% if form.errors %}
            {% for error in form.non_field_errors %}
@@ -24,7 +24,7 @@
        </div>
        {% endif %}
        <div class="form-group iclass">
-           <label class="iclass" for="un">{% trans 'Username' %}</label>
+           <label class="iclass" for="un">{{ form.username.label_tag }}</label>
            <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="e.g. abc123" type="text"/>
        </div>
        <div class="form-group text-center">
