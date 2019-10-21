@@ -50,7 +50,7 @@ ipconfig
 
 <p>
   <a href="" rel="noopener">
- <img width=200px src="./assets/add_host.jpg" style=></a>
+ <img src="./assets/add_host.jpg" style=></a>
 </p>
 
 * Run
