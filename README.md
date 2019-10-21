@@ -37,6 +37,7 @@ The proposed project is a voice based authentication system. Our system will be 
 ### Run it on your phone
 
 * Copy your IP address by running following command
+
 Linux/Mac
 ```
 ifconfig
@@ -46,7 +47,12 @@ Windows
 ipconfig
 ```
 * Add you IP address in ALLOWED_HOSTS list in setting.py file
-<img width=200px src="./assets/add_host.jpg" style=>
+
+<p>
+  <a href="" rel="noopener">
+ <img width=200px src="./assets/add_host.jpg" style=></a>
+</p>
+
 * Run
 ```
 python3 manage.py runserver IP_ADDRESS:PORT
