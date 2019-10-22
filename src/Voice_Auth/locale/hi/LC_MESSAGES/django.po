@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 19:59+0530\n"
+"POT-Creation-Date: 2019-10-22 10:01+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,71 +25,79 @@ msgstr "अंग्रेज़ी"
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: .\accounts\forms.py:23 .\accounts\forms.py:77 .\accounts\forms.py:107
+#: .\accounts\forms.py:23 .\accounts\forms.py:94 .\accounts\forms.py:123
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
-#: .\accounts\forms.py:24 .\accounts\forms.py:111
+#: .\accounts\forms.py:24 .\accounts\forms.py:127
 msgid "Answer 1"
 msgstr "उत्तर 1"
 
-#: .\accounts\forms.py:25 .\accounts\forms.py:112
+#: .\accounts\forms.py:25 .\accounts\forms.py:128
 msgid "Answer 2"
 msgstr "उत्तर 2"
 
-#: .\accounts\forms.py:26 .\accounts\forms.py:91
+#: .\accounts\forms.py:26
+msgid "Answer 3"
+msgstr "उत्तर 3"
+
+#: .\accounts\forms.py:27
+msgid "Answer 4"
+msgstr "उत्तर - 4"
+
+#: .\accounts\forms.py:28 .\accounts\forms.py:108
 msgid "Password"
 msgstr "पारण शब्द"
 
-#: .\accounts\forms.py:42 .\accounts\forms.py:46
+#: .\accounts\forms.py:46 .\accounts\forms.py:50
 msgid "Invalid Credentials"
 msgstr "अवैध प्रत्यय पत्र"
 
-#: .\accounts\forms.py:56 .\accounts\forms.py:72
+#: .\accounts\forms.py:65 .\accounts\forms.py:89
 msgid "Incorrect response"
 msgstr "गलत जवाब"
 
-#: .\accounts\forms.py:86
+#: .\accounts\forms.py:103
 msgid "Username does not exists"
 msgstr "प्रयोक्ता नाम मौजूद नहीं करता है"
 
-#: .\accounts\forms.py:92
+#: .\accounts\forms.py:109
 msgid "Confirm password"
 msgstr "पासवर्ड की पुष्टि कीजिये"
 
-#: .\accounts\forms.py:108
+#: .\accounts\forms.py:124
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:109 .\templates\registration\login.html:14
+#: .\accounts\forms.py:125 .\templates\registration\login.html:16
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:110 .\templates\registration\login.html:19
+#: .\accounts\forms.py:126 .\templates\registration\login.html:23
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
-#: .\accounts\forms.py:127
+#: .\accounts\forms.py:143
 msgid "Username already exists"
 msgstr "उपयोगकर्ता का नाम पहले से मौजूद है"
 
-#: .\accounts\forms.py:134
+#: .\accounts\forms.py:150
 msgid "Email is taken"
 msgstr "ईमेल में लिया जाता है"
 
-#: .\accounts\forms.py:142
+#: .\accounts\forms.py:158
 msgid "Passwords don't match"
 msgstr "पासवर्ड मेल नहीं खाते"
 
-#: .\accounts\forms.py:151
+#: .\accounts\forms.py:167
 msgid "Please select 2 different questions"
 msgstr "2 अलग अलग सवाल का चयन करें"
 
-#: .\accounts\models.py:52
+#: .\accounts\models.py:60
 msgid ""
 "Username must be Alpahnumeric or contain any of the following: \". @ + -\" "
 msgstr ""
-"उपयोगकर्ता नाम अल्पाहारी होना चाहिए या निम्नलिखित में से कोई भी शामिल होना चाहिए: \"। @ + "
+"प्रयोक्ता नाम Alpahnumeric है या इनमें से कोई भी शामिल होना चाहिए: \"। @ + "
 "-\""
 
 #: .\accounts\templates\accounts\enter-un.html:3
@@ -138,7 +146,7 @@ msgstr "क्या आपके पास पहले से एक खात
 #: .\accounts\templates\accounts\index.html:11
 #: .\templates\registration\login.html:3
 #: .\templates\registration\login.html:13
-#: .\templates\registration\login.html:67
+#: .\templates\registration\login.html:114
 msgid "Login"
 msgstr "लॉग इन करें"
 
@@ -192,12 +200,25 @@ msgstr "अनुवाद करना"
 msgid "Login Page"
 msgstr "लॉगिन वाला पन्ना"
 
-#: .\templates\registration\login.html:17
+#: .\templates\registration\login.html:19
+#: .\templates\registration\login.html:26
+#: .\templates\registration\login.html:35
+#: .\templates\registration\login.html:42
 msgid "Your browser does not support the audio element."
 msgstr "आपका ब्राउजर में ऑडियो तत्व समर्थित नहीं है।"
 
-#: .\templates\registration\login.html:42
-#: .\templates\registration\login.html:54
+#: .\templates\registration\login.html:32
+msgid "Question 3"
+msgstr "प्रश्न 3"
+
+#: .\templates\registration\login.html:39
+msgid "Question 4"
+msgstr "प्रश्न 4"
+
+#: .\templates\registration\login.html:65
+#: .\templates\registration\login.html:77
+#: .\templates\registration\login.html:88
+#: .\templates\registration\login.html:100
 #: .\templates\registration\register.html:49
 #: .\templates\registration\register.html:61
 msgid "Record"

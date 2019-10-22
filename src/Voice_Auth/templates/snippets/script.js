@@ -5,6 +5,8 @@ var recognition = new SpeechRecognition();
 
 var Textbox1 = $('#ans1');
 var Textbox2 = $('#ans2');
+var Textbox3 = $('#ans3');
+var Textbox4 = $('#ans4');
 var instructions = $('instructions');
 
 var flagl = 1;
@@ -30,8 +32,12 @@ recognition.onresult = function(event) {
     Content += transcript;
     if(flag==0){
         Textbox1.val(Content);
-    }else{
+    }else if(flag==1){
         Textbox2.val(Content);
+    }else if(flag==2){
+        Textbox3.val(Content);
+    }else{
+        Textbox4.val(Content);
     }
 };
 
@@ -63,9 +69,29 @@ $('#start-btn2').on('click', function(e) {
   }
   recognition.start();
 });
+$('#start-btn3').on('click', function(e) {
+    flag=2;
+  if (Content.length) {
+    Content = '';
+  }
+  recognition.start();
+});
+$('#start-btn4').on('click', function(e) {
+    flag=3;
+  if (Content.length) {
+    Content = '';
+  }
+  recognition.start();
+});
 Textbox1.on('input', function() {
   Content = $(this).val();
 })
 Textbox2.on('input', function() {
+  Content = $(this).val();
+})
+Textbox3.on('input', function() {
+  Content = $(this).val();
+})
+Textbox4.on('input', function() {
   Content = $(this).val();
 })

@@ -11,17 +11,38 @@
 <div class="card" >
    <div class="card-body">
      <h4 class="card-title text-center">{% trans 'Login' %}</h4><br />
-    <label class="iclass">{% trans 'Question 1' %}</label><br>
-      <audio controls>
-        <source src="{{ link1 }}" type="audio/mpeg">
-        {% trans 'Your browser does not support the audio element.' %}
-    </audio><br/><br>
-    <label class="iclass">{% trans 'Question 2' %}</label><br>
-    <audio controls>
-      <source src="{{ link2 }}" type="audio/mpeg">
-      Your browser does not support the audio element.
-  </audio><br/><br>
-
+     <div class="row">
+         <div class = "col-md-6">
+             <label class="iclass">{% trans 'Question 1' %}</label><br>
+               <audio controls>
+                 <source src="{{ link1 }}" type="audio/mpeg">
+                 {% trans 'Your browser does not support the audio element.' %}
+             </audio><br/><br>
+        </div>
+        <div class = "col-md-6">
+            <label class="iclass">{% trans 'Question 2' %}</label><br>
+              <audio controls>
+                <source src="{{ link2 }}" type="audio/mpeg">
+                {% trans 'Your browser does not support the audio element.' %}
+            </audio><br/><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class = "col-md-6">
+            <label class="iclass">{% trans 'Question 3' %}</label><br>
+              <audio controls>
+                <source src="{{ link3 }}" type="audio/mpeg">
+                {% trans 'Your browser does not support the audio element.' %}
+            </audio><br/><br>
+       </div>
+       <div class = "col-md-6">
+           <label class="iclass">{% trans 'Question 4' %}</label><br>
+             <audio controls>
+               <source src="{{ link4 }}" type="audio/mpeg">
+               {% trans 'Your browser does not support the audio element.' %}
+           </audio><br/><br>
+       </div>
+    </div>
      <form  method="post" enctype="multipart/form-data">
        {% csrf_token %}
        <!-- {{ form|crispy }} -->
@@ -32,6 +53,8 @@
                 </div>
                 {%endfor%}
         {% endif %}
+        <input type = "hidden" name="{{ form.gq1.html_name }}" value="{{ gq1 }}"/>
+        <input type = "hidden" name="{{ form.gq2.html_name }}" value="{{ gq2 }}"/>
        <div class="form-group iclass">
            <label class="iclass" for="un">{{ form.username.label_tag }}</label>
            <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="" type="text" value="{{user.username}}"/>
@@ -56,6 +79,30 @@
            {% if form.answer2.errors%}
            <div class="alert alert-danger">
                <strong>{{ form.answer2.errors|escape }}</strong>
+           </div>
+           {% endif %}
+       </div>
+       <div class="form-group iclass">
+           <label class="iclass" for="pw">{{ form.answer3.label_tag }}</label>
+           <input class="form-control" id="ans3" maxlength="30" name="{{ form.answer3.html_name }}" placeholder=" " type="text" readonly/><br>
+           <button class="btn submit-btn" type="button"  id="start-btn3"  name="button">{% trans 'Record' %}</button>
+           <!-- <p id="instructions">Press the Start button</p> -->
+           {% if form.answer3.errors%}
+
+           <div class="alert alert-danger">
+               <strong>{{ form.answer3.errors|escape }}</strong>
+           </div>
+           {% endif %}
+       </div>
+       <div class="form-group iclass">
+           <label class="iclass" for="pw">{{ form.answer4.label_tag }}</label>
+           <input class="form-control" id="ans4" maxlength="30" name="{{ form.answer4.html_name }}" placeholder=" " type="text" readonly/><br>
+           <button class="btn submit-btn" type="button"  id="start-btn4"  name="button">{% trans 'Record' %}</button>
+           <!-- <p id="instructions">Press the Start button</p> -->
+           {% if form.answer4.errors%}
+
+           <div class="alert alert-danger">
+               <strong>{{ form.answer4.errors|escape }}</strong>
            </div>
            {% endif %}
        </div>

@@ -2,7 +2,7 @@
 from __future__ import print_function
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
-from .models import Account, Question
+from .models import Account, Question, Generalq
 from django.db.models import Q
 import speech_recognition as sr
 from gtts import gTTS
@@ -23,7 +23,11 @@ class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label=_('Username'))
     answer1 = forms.CharField(label=_('Answer 1'))
     answer2 = forms.CharField(label=_('Answer 2'))
+    answer3 = forms.CharField(label=_('Answer 3'))
+    answer4 = forms.CharField(label=_('Answer 4'))
     password = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
+    gq1 = forms.CharField(widget=forms.HiddenInput)
+    gq2 = forms.CharField(widget=forms.HiddenInput)
 
     def __init__(self, *args, **kwargs):
         un = kwargs.pop('username', None)
@@ -44,15 +48,20 @@ class UserLoginForm(AuthenticationForm):
         if not user.check_password(password):
                 # log auth tries
             raise forms.ValidationError(_("Invalid Credentials"))
-        # q1 = self.cleaned_data.get("question1")
         a1 = self.cleaned_data.get("answer1")
-        # q2 = self.cleaned_data.get("question2")
         a2 = self.cleaned_data.get("answer2")
+        a3 = self.cleaned_data.get("answer3")
+        a4 = self.cleaned_data.get("answer4")
+        gq1 = self.cleaned_data.get("gq1")
+        gq2 = self.cleaned_data.get("gq2")
+        q3 = Generalq.objects.get(pk=gq1)
+        q4 = Generalq.objects.get(pk=gq2)
+        # gqans1 = Generalq.objects.get(pk=gq1)
         # if user.question1 != q1 or user.question2 != q2:
         # raise forms.ValidationError("Incorrect Question")
-        print(a1)
-        print(a2)
-        if a1 == None or a2 == None:
+        print(q3.answer)
+        print(q4.answer)
+        if a1 == None or a2 == None or a3 == None or a4 == None:
             raise forms.ValidationError(_("Incorrect response"))
         # Translate to English if Hindi Output
         if flag == 1:
@@ -64,11 +73,19 @@ class UserLoginForm(AuthenticationForm):
 
         flag1 = 0
         flag2 = 0
+        flag3 = 0
+        flag4 = 0
         if user.answer1 in a1:
             flag1 = 1
         if user.answer2 in a2:
             flag2 = 1
-        if flag1 != 1 or flag2 != 1:
+        a3 = a3.lower()
+        a4 = a4.lower()
+        if q3.answer in a3:
+            flag3 = 1
+        if q4.answer in a4:
+            flag4 = 1
+        if flag1 != 1 or flag2 != 1 or flag3 != 1 or flag4 != 1:
             raise forms.ValidationError(_("Incorrect response"))
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
@@ -90,7 +107,6 @@ class UsernameForm(forms.Form):
 class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm password'), widget=forms.PasswordInput)
-    # answer1 = forms.CharField(widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
@@ -109,7 +125,7 @@ class RegisterForm(forms.ModelForm):
             'question1': _('Question 1'),
             'question2': _('Question 2'),
             'answer1': _('Answer 1'),
-            'answer2': _('Answer 2')
+            'answer2': _('Answer 2'),
         }
         error_messages: {
             'question1': {
