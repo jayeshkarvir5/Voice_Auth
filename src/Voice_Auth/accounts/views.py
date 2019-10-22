@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonRespons
 from django.urls import reverse_lazy, reverse
 from .forms import RegisterForm
 from django.db.models import Q
-from .models import Account, Question
+from .models import Account, Question, Generalq
 from .forms import RegisterForm, UsernameForm, UserLoginForm
 from Voice_Auth import settings
 import speech_recognition as sr
@@ -29,9 +29,8 @@ class ResponseBot:
     def __init__(self):
         print('Bot Created')
 
-    def askQuestion(self, questions):
-        index = random.randint(1, 5)
-        print(questions[index])
+    def askQuestion(self, l, r):
+        index = random.randint(l, r)
         return index
 
     def verifyResponse(self, answers, response, index):
@@ -122,6 +121,10 @@ class LoginView(FormView):
         bot = ResponseBot()
         q1 = Question.objects.get(question=user.question1)
         q2 = Question.objects.get(question=user.question2)
+        i1 = bot.askQuestion(1, 5)
+        i2 = bot.askQuestion(6, 10)
+        q3 = Generalq.objects.get(pk=i1)
+        q4 = Generalq.objects.get(pk=i2)
         print(q1.pk)
         print(q2.pk)
         # response = bot.getResponse()
@@ -129,8 +132,14 @@ class LoginView(FormView):
         host = self.request.get_host()
         link1 = bot.deliverResponse(q1.question, 1, flag, host)
         link2 = bot.deliverResponse(q2.question, 2, flag, host)
+        link3 = bot.deliverResponse(q3.question, 3, flag, host)
+        link4 = bot.deliverResponse(q4.question, 4, flag, host)
         context['link1'] = link1
         context['link2'] = link2
+        context['link3'] = link3
+        context['link4'] = link4
+        context['gq1'] = i1
+        context['gq2'] = i2
         return context
 
 

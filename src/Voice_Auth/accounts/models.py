@@ -13,6 +13,14 @@ class Question(models.Model):
         return self.question
 
 
+class Generalq(models.Model):
+    question = models.TextField()
+    answer = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.question
+
+
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         if not email:
