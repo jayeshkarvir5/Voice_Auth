@@ -1,12 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.validators import RegexValidator
+from django.utils.translation import ugettext_lazy as _
 
 USERNAME_REGEX = '^[a-zA-Z0-9.+-]*$'
 
 
 class Question(models.Model):
     question = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+
+class Generalq(models.Model):
+    question = models.TextField()
+    answer = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.question
@@ -47,7 +56,8 @@ class Account(AbstractBaseUser):
                                 validators=[
                                     RegexValidator(
                                         regex=USERNAME_REGEX,
-                                        message='Username must be Alpahnumeric or contain any of the following: ". @ + -" ',
+                                        message=_(
+                                            'Username must be Alpahnumeric or contain any of the following: ". @ + -" '),
                                         code='invalid_username'
                                     )],
                                 unique=True,)

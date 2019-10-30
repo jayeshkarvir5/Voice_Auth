@@ -25,12 +25,13 @@ SECRET_KEY = 'le1e_r%=@a(13*1%q^nmj33l=%$&)cia92x7sxyu)z)bk=^*6^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.105','127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.105', '192.168.0.105', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'autotranslate',
     'accounts',
     'django.contrib.admin',
@@ -46,6 +47,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'accounts.middleware.AdminLocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -113,8 +115,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'accounts.Account'
 
-LOGOUT_REDIRECT_URL = '/accounts/index/'
-LOGIN_REDIRECT_URL = '/accounts/index/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
