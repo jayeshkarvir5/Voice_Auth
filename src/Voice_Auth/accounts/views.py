@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404, JsonRespons
 from django.urls import reverse_lazy, reverse
 from .forms import RegisterForm
 from django.db.models import Q
-from .models import Account, Question
+from .models import Account, Question, Generalq
 from .forms import RegisterForm, UsernameForm, UserLoginForm
 from Voice_Auth import settings
 import speech_recognition as sr
@@ -22,7 +22,6 @@ from django.utils import translation
 translate_client = translate.Client()
 client = texttospeech.TextToSpeechClient()
 # Flag = 1 for Hindi
-flag = 1
 
 
 class ResponseBot:
@@ -30,9 +29,8 @@ class ResponseBot:
     def __init__(self):
         print('Bot Created')
 
-    def askQuestion(self, questions):
-        index = random.randint(1, 5)
-        print(questions[index])
+    def askQuestion(self, l, r):
+        index = random.randint(l, r)
         return index
 
     def verifyResponse(self, answers, response, index):
@@ -59,31 +57,19 @@ class ResponseBot:
         return text.lower()
 
     def deliverResponse(self, text, index, flag, host):
-        # language = 'en'
-        # myobj = gTTS(text=text, lang=language, slow=False)
-        # myobj.save(settings.MEDIA_ROOT+'/output'+str(index)+'.mp3')
         print(settings.MEDIA_ROOT)
         # os.startfile(settings.MEDIA_ROOT+'1.mp3')
-
+        print(text)
         # For Hindi
+        lang_code = 'en-IN'
         if flag == 1:
-            translation = translate_client.translate(text, target_language='hi')
-            text = translation['translatedText']
-            print(translation['translatedText'])
-
-            synthesis_input = texttospeech.types.SynthesisInput(text=text)
-            voice = texttospeech.types.VoiceSelectionParams(
-                language_code='hi', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
-            audio_config = texttospeech.types.AudioConfig(
-                audio_encoding=texttospeech.enums.AudioEncoding.MP3)
-            response = client.synthesize_speech(synthesis_input, voice, audio_config)
-        else:
-            synthesis_input = texttospeech.types.SynthesisInput(text=text)
-            voice = texttospeech.types.VoiceSelectionParams(
-                language_code='en-IN', ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
-            audio_config = texttospeech.types.AudioConfig(
-                audio_encoding=texttospeech.enums.AudioEncoding.MP3)
-            response = client.synthesize_speech(synthesis_input, voice, audio_config)
+            lang_code = 'hi'
+        synthesis_input = texttospeech.types.SynthesisInput(text=text)
+        voice = texttospeech.types.VoiceSelectionParams(
+            language_code=lang_code, ssml_gender=texttospeech.enums.SsmlVoiceGender.NEUTRAL)
+        audio_config = texttospeech.types.AudioConfig(
+            audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+        response = client.synthesize_speech(synthesis_input, voice, audio_config)
 
         with open(settings.MEDIA_ROOT + '/output'+str(index)+'.mp3', 'wb') as out:
             out.write(response.audio_content)
@@ -93,7 +79,7 @@ class ResponseBot:
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('accounts:index')
+    success_url = reverse_lazy('index')
 
 
 class UnView(FormView):
@@ -109,11 +95,11 @@ class UnView(FormView):
 
 def LogoutView(request):
     logout(request)
-    return redirect('/accounts/index/')
+    return redirect('/')
 
 
 class LoginView(FormView):
-    success_url = reverse_lazy('accounts:index')
+    success_url = reverse_lazy('index')
     template_name = "registration/login.html"
     form_class = UserLoginForm
 
@@ -135,6 +121,10 @@ class LoginView(FormView):
         bot = ResponseBot()
         q1 = Question.objects.get(question=user.question1)
         q2 = Question.objects.get(question=user.question2)
+        i1 = bot.askQuestion(1, 10)
+        i2 = bot.askQuestion(11, 20)
+        q3 = Generalq.objects.get(pk=i1)
+        q4 = Generalq.objects.get(pk=i2)
         print(q1.pk)
         print(q2.pk)
         # response = bot.getResponse()
@@ -142,8 +132,14 @@ class LoginView(FormView):
         host = self.request.get_host()
         link1 = bot.deliverResponse(q1.question, 1, flag, host)
         link2 = bot.deliverResponse(q2.question, 2, flag, host)
+        link3 = bot.deliverResponse(q3.question, 3, flag, host)
+        link4 = bot.deliverResponse(q4.question, 4, flag, host)
         context['link1'] = link1
         context['link2'] = link2
+        context['link3'] = link3
+        context['link4'] = link4
+        context['gq1'] = i1
+        context['gq2'] = i2
         return context
 
 

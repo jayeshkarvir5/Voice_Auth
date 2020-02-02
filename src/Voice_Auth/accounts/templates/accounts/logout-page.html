@@ -4,14 +4,15 @@
 {% block title %}{% trans 'Logout' %}{% endblock %}
 
 {% block body %}
+<h4 class="text-center">{% trans 'Logout Page' %}</h4>
 {% if request.user.is_authenticated %}
-    <p class="header">{% trans 'Do you want to logout ?' %}'</p>
+    <p class="lead">{% trans 'Do you want to logout ?' %}</p>
     <!-- <p class="lead">To create a new user you must logout.</p> -->
     <form class="form" action="{% url 'accounts:logout' %}">
         <button type="submit" class='btn mr-2'>{% trans 'Yes' %}</button>
-        <a href="{% url 'accounts:index' %}" class='btn btn-outline-secondary follow-btn'>{% trans 'No' %}</a>
+        <a href="{% url 'index' %}" class='btn btn-outline-secondary follow-btn'>{% trans 'No' %}</a>
     </form>
 {% else %}
-    <p class="header">{% trans 'Do you want to'%} <a href="{% url 'accounts:login'%}">{% trans 'login'%}</a> ?</p>
+    <p class="lead">{% trans 'Do you want to'%} <a href="{% url 'accounts:enter-un'%}">{% trans 'login'%}</a> ?</p>
 {% endif %}
 {% endblock %}
