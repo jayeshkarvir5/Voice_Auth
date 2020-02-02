@@ -25,11 +25,7 @@ SECRET_KEY = 'le1e_r%=@a(13*1%q^nmj33l=%$&)cia92x7sxyu)z)bk=^*6^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['192.168.0.105', '192.168.43.238','127.0.0.1']
-=======
 ALLOWED_HOSTS = ['192.168.1.105', '192.168.0.105', '127.0.0.1']
->>>>>>> 764913410136d2de26e2a61ea0dce9a67c721404
 
 
 # Application definition

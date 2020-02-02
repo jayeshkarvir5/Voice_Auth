@@ -18,6 +18,10 @@ from google.cloud import texttospeech
 from google.cloud import translate
 from django.utils import translation
 
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+
+
 
 translate_client = translate.Client()
 client = texttospeech.TextToSpeechClient()
@@ -149,3 +153,20 @@ class LogoutPage(TemplateView):
 
 class IndexView(TemplateView):
     template_name = 'accounts/index.html'
+	
+def savefiles(request):
+	try:
+		if request.method == 'POST':
+			audio = request.FILES['audio']
+			fs = FileSystemStorage()
+			fs.save(audio.name,audio)
+			# uploadedFile = open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", "wb")
+			# with open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", 'wb+') as destination:
+				# for chunk in f.chunks():
+					# destination.write(chunk)
+			# f.close()
+		return render(request,'index.html')
+	except:
+		print("exception")
+		return render(request,'index.html')
+	
