@@ -38,6 +38,7 @@
      <button class='btn btn-sm btn-outline-secondary follow-btn' id="translate" type="submit" />{% trans 'Translate' %}</button>
         </form>
     {% include 'snippets/js.html' %}
+    {% block javascript %}{% endblock %}
     <script>{% include 'snippets/script.js' %}</script>
 </body>
 </html>
