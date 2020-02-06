@@ -57,7 +57,7 @@
         <input type = "hidden" name="{{ form.gq2.html_name }}" value="{{ gq2 }}"/>
        <div class="form-group iclass">
            <label class="iclass" for="un">{{ form.username.label_tag }}</label>
-           <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="" type="text" value="{{user.username}}"/>
+           <input class="form-control" id="un" maxlength="30" name="{{ form.username.html_name }}" placeholder="" type="text" value="{{user.username}}" readonly/>
        </div>
        <div class="form-group iclass">
            <label class="iclass" for="pw">{{ form.answer1.label_tag }}</label>
@@ -119,3 +119,25 @@
  </div>
 {%endif%}
 {%endblock%}
+{% block javascript %}
+    <script>
+        $(document).ready(function() {
+            $("#start-btn1").click(function () {
+                $("#ans1").val('success');
+                $.ajax({
+                    url: '/ajax/stt_ans/',
+                    data: {
+                      'username' : $('#un').val() ,
+                      'no_': '1'
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                      if (data.success) {
+                        alert(data.text);
+                      }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

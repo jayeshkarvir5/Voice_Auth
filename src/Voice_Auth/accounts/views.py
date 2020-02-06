@@ -22,7 +22,6 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 
 
-
 translate_client = translate.Client()
 client = texttospeech.TextToSpeechClient()
 # Flag = 1 for Hindi
@@ -43,14 +42,12 @@ class ResponseBot:
                 return True
         return False
 
-    def getResponse(self):
+    def getResponse(self, username, no_):
         r = sr.Recognizer()
-#         print(sr.Microphone.list_microphone_names())
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source, duration=1)
-        # r.energy_threshold()
-            print("Please answer in 1 word or a phrase : ")
-            audio = r.listen(source, timeout=2, phrase_time_limit=6)
+        file = sr.AudioFile(settings.MEDIA_ROOT + "/" + username + "-/a" + no_ + ".wav")
+        with file as source:
+            r.adjust_for_ambient_noise(source, duration=0.5)
+            audio = r.record(source, language_code='hi')
             try:
                 text = r.recognize_google(audio)
                 print("You answered '"+text+"'")
@@ -100,6 +97,21 @@ class UnView(FormView):
 def LogoutView(request):
     logout(request)
     return redirect('/')
+
+
+def Stt_ans(request):
+    bot = ResponseBot()
+    username = request.GET.get('username', None)
+    no_ = request.GET.get('no_', None)
+    text = bot.getResponse(username, no_)
+    success = True
+    if text == "sorry, could not recognise":
+        success = False
+    data = {
+        'text': text,
+        'success': success
+    }
+    return JsonResponse(data)
 
 
 class LoginView(FormView):
@@ -153,20 +165,20 @@ class LogoutPage(TemplateView):
 
 class IndexView(TemplateView):
     template_name = 'accounts/index.html'
-	
+
+
 def savefiles(request):
-	try:
-		if request.method == 'POST':
-			audio = request.FILES['audio']
-			fs = FileSystemStorage()
-			fs.save(audio.name,audio)
-			# uploadedFile = open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", "wb")
-			# with open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", 'wb+') as destination:
-				# for chunk in f.chunks():
-					# destination.write(chunk)
-			# f.close()
-		return render(request,'index.html')
-	except:
-		print("exception")
-		return render(request,'index.html')
-	
+    try:
+        if request.method == 'POST':
+            audio = request.FILES['audio']
+            fs = FileSystemStorage()
+            fs.save(audio.name, audio)
+            # uploadedFile = open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", "wb")
+            # with open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", 'wb+') as destination:
+            # for chunk in f.chunks():
+            # destination.write(chunk)
+            # f.close()
+        return render(request, 'index.html')
+    except:
+        print("exception")
+        return render(request, 'index.html')
