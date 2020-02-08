@@ -4,11 +4,10 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField, AuthenticationForm
 from .models import Account, Question, Generalq
 from django.db.models import Q
-import speech_recognition as sr
-from gtts import gTTS
 import os
 import random
 import time
+from Voice_Auth import settings
 from google.cloud import translate
 from django.utils.translation import ugettext_lazy as _
 
@@ -87,6 +86,11 @@ class UserLoginForm(AuthenticationForm):
             flag4 = 1
         if flag1 != 1 or flag2 != 1 or flag3 != 1 or flag4 != 1:
             raise forms.ValidationError(_("Incorrect response"))
+        out = open(settings.MEDIA_ROOT + "/test_set.txt", "w")
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a1.wav\n')
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a2.wav\n')
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a3.wav\n')
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a4.wav\n')
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
 
@@ -174,7 +178,10 @@ class RegisterForm(forms.ModelForm):
         user.is_active = True
         # user.is_active = False
         # create a new user hash for activating email.
-
+        un = user.username
+        out = open(settings.MEDIA_ROOT + "/dev_set.txt", "w")
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a1.wav\n')
+        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a2.wav\n')
         if commit:
             user.save()
         return user
