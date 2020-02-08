@@ -9,7 +9,6 @@ from django.db.models import Q
 from .models import Account, Question, Generalq
 from .forms import RegisterForm, UsernameForm, UserLoginForm
 from Voice_Auth import settings
-import speech_recognition as sr
 from gtts import gTTS
 import os
 import random
@@ -21,7 +20,8 @@ from google.cloud import speech_v1p1beta1
 from google.cloud.speech_v1p1beta1 import enums
 from django.utils import translation
 
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, Storage
+from .storage import OverwriteStorage
 from django.http import HttpResponse
 
 
@@ -172,24 +172,24 @@ class IndexView(TemplateView):
 
 def AudioStt(request):
     bot = ResponseBot()
-    print(request)
     audio = request.FILES['audio']
     username = request.POST.get('username', None)
     no_ = request.POST.get('no_', None)
     print(username)
     print(no_)
+    success = True
     if audio == None:
         success = False
-        print("Blob not received")
+        print("Audio not received")
     else:
-        fs = FileSystemStorage()
+        location = settings.MEDIA_ROOT + '/' + username + '-'
+        fs = OverwriteStorage(location=location)
         fs.save(audio.name, audio)
     if translation.get_language() == "en":
         flag = 0
     else:
         flag = 1
     text = bot.getResponse(username, no_, flag)
-    success = True
     if text == "dummy":
         success = False
     data = {
