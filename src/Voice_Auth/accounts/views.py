@@ -14,9 +14,15 @@ from gtts import gTTS
 import os
 import random
 import time
+import io
 from google.cloud import texttospeech
 from google.cloud import translate
+from google.cloud import speech_v1p1beta1
+from google.cloud.speech_v1p1beta1 import enums
 from django.utils import translation
+
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 
 
 translate_client = translate.Client()
@@ -39,21 +45,34 @@ class ResponseBot:
                 return True
         return False
 
-    def getResponse(self):
-        r = sr.Recognizer()
-#         print(sr.Microphone.list_microphone_names())
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source, duration=1)
-        # r.energy_threshold()
-            print("Please answer in 1 word or a phrase : ")
-            audio = r.listen(source, timeout=2, phrase_time_limit=6)
-            try:
-                text = r.recognize_google(audio)
-                print("You answered '"+text+"'")
-            except:
-                text = "sorry, could not recognise"
-                print("sorry, could not recognise")
-
+    def getResponse(self, username, no_, flag):
+        client = speech_v1p1beta1.SpeechClient()
+        lang_code = 'en-IN'
+        if flag == 1:
+            lang_code = 'hi'
+        sample_rate_hertz = 16000
+        # Encoding of audio data sent. This sample sets this explicitly.
+        # This field is optional for FLAC and WAV audio formats.
+        encoding = enums.RecognitionConfig.AudioEncoding.MP3
+        config = {
+            "language_code": lang_code,
+            # "sample_rate_hertz": sample_rate_hertz,
+            # verify audio_channel_count
+            "audio_channel_count": 1,
+            # "encoding": encoding,
+        }
+        uri = settings.MEDIA_ROOT + "/" + username + "-/a" + no_ + ".wav"
+        with io.open(uri, "rb") as f:
+            content = f.read()
+        audio = {"content": content}
+        response = client.recognize(config, audio)
+        text = "dummy"
+        if response.results:
+            text = response.results[0].alternatives[0].transcript
+        for result in response.results:
+            # First alternative is the most probable result
+            alternative = result.alternatives[0]
+            print(u"Transcript: {}".format(alternative.transcript))
         return text.lower()
 
     def deliverResponse(self, text, index, flag, host):
@@ -149,3 +168,32 @@ class LogoutPage(TemplateView):
 
 class IndexView(TemplateView):
     template_name = 'accounts/index.html'
+
+
+def AudioStt(request):
+    bot = ResponseBot()
+    print(request)
+    audio = request.FILES['audio']
+    username = request.POST.get('username', None)
+    no_ = request.POST.get('no_', None)
+    print(username)
+    print(no_)
+    if audio == None:
+        success = False
+        print("Blob not received")
+    else:
+        fs = FileSystemStorage()
+        fs.save(audio.name, audio)
+    if translation.get_language() == "en":
+        flag = 0
+    else:
+        flag = 1
+    text = bot.getResponse(username, no_, flag)
+    success = True
+    if text == "dummy":
+        success = False
+    data = {
+        'text': text,
+        'success': success
+    }
+    return JsonResponse(data)
