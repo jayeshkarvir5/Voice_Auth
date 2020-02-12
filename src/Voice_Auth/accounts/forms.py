@@ -10,7 +10,8 @@ import time
 from Voice_Auth import settings
 from google.cloud import translate
 from django.utils.translation import ugettext_lazy as _
-
+from  accounts.test_speaker import identify_speaker
+from accounts.train_model import train_speaker
 
 translate_client = translate.Client()
 
@@ -86,11 +87,21 @@ class UserLoginForm(AuthenticationForm):
             flag4 = 1
         if flag1 != 1 or flag2 != 1 or flag3 != 1 or flag4 != 1:
             raise forms.ValidationError(_("Incorrect response"))
+
+
         out = open(settings.MEDIA_ROOT + "/test_set.txt", "w")
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a1.wav\n')
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a2.wav\n')
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a3.wav\n')
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a4.wav\n')
+        out.write(un + '-\\a1.wav\n')
+        out.write(un + '-\\a2.wav\n')
+        out.write(un + '-\\a3.wav\n')
+        out.write(un + '-\\a4.wav\n')
+
+        res = identify_speaker(un)
+        print("Speaker: {} {}".format(res,un))
+        if res == un:
+            print('Voice Matched')
+        else:
+            raise forms.ValidationError(_("Incorrect Voice Signature"))
+
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
 
@@ -180,8 +191,9 @@ class RegisterForm(forms.ModelForm):
         # create a new user hash for activating email.
         un = user.username
         out = open(settings.MEDIA_ROOT + "/dev_set.txt", "w")
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a1.wav\n')
-        out.write(settings.MEDIA_ROOT + '\\' + un + '-\\a2.wav\n')
+        out.write(un + '-\\a1.wav\n')
+        out.write(un + '-\\a2.wav\n')
         if commit:
             user.save()
+       
         return user
