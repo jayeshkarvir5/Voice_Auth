@@ -11,7 +11,7 @@ from Voice_Auth import settings
 from google.cloud import translate
 from django.utils.translation import ugettext_lazy as _
 from  accounts.test_speaker import identify_speaker
-from accounts.train_model import train_speaker
+from accounts.train_model import createGMM
 
 translate_client = translate.Client()
 
@@ -94,6 +94,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a2.wav\n')
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
+        out.close()
 
         res = identify_speaker(un)
         print("Speaker: {} {}".format(res,un))
@@ -193,6 +194,7 @@ class RegisterForm(forms.ModelForm):
         out = open(settings.MEDIA_ROOT + "/dev_set.txt", "w")
         out.write(un + '-\\a1.wav\n')
         out.write(un + '-\\a2.wav\n')
+        createGMM(un)
         if commit:
             user.save()
        
