@@ -7,8 +7,8 @@
   </head>
   <body>
     <div id="controls">
-  	 <button id="recordButton">Record</button>
-  	 <button id="stopButton" disabled>Stop</button>
+  	 <button id="recordButtonId" onclick="startRecording('recordButtonId','stopButtonId')">Record</button>
+  	 <button id="stopButtonId" onclick="stopRecording('recordingFileName')" disabled>Stop</button>
     </div>
 	
 	
@@ -16,7 +16,6 @@
     <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
   	<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
   	<script>
-			
 		//webkitURL is deprecated but nevertheless
 		URL = window.URL || window.webkitURL;
 
@@ -28,15 +27,19 @@
 		var AudioContext = window.AudioContext || window.webkitAudioContext;
 		var audioContext //audio context to help us record
 
-		var recordButton = document.getElementById("recordButton");
-		var stopButton = document.getElementById("stopButton");
+		var recordingNameGlobal="dummy";
+		var recordButton;
+		var stopButton;
 
-		//add events to those 2 buttons
-		recordButton.addEventListener("click", startRecording);
-		stopButton.addEventListener("click", stopRecording);
+		function startRecording(recordButtonId,stopButtonId) {
+			console.log("recordButton clicked "+recordButtonId+" "+stopButtonId);
+			recordButton = document.getElementById(recordButtonId);
+			stopButton = document.getElementById(stopButtonId);
+			
 
-		function startRecording() {
-			console.log("recordButton clicked");
+			//add events to those 2 buttons
+			//recordButton.addEventListener("click", startRecording);
+			//stopButton.addEventListener("click", stopRecording);
 
 			/*
 				Simple constraints object, for more advanced audio features see
@@ -89,13 +92,12 @@
 				//enable the record button if getUserMedia() fails
 				recordButton.disabled = false;
 				stopButton.disabled = true;
-				pauseButton.disabled = true
 			});
 		}
 
-		function stopRecording() {
+		function stopRecording(recordingName) {
 			console.log("stopButton clicked");
-
+			recordingNameGlobal = recordingName;
 			//disable the stop button, enable the record too allow for new recordings
 			stopButton.disabled = true;
 			recordButton.disabled = false;
@@ -109,7 +111,7 @@
 			//create the wav blob and pass it on to createDownloadLink
 			rec.exportWAV(uploadAudio);
 		}
-		
+
 		function getCookie(name) {
 			var cookieValue = null;
 			if (document.cookie && document.cookie != '') {
@@ -125,7 +127,7 @@
 			}
 			return cookieValue;
 		}
-		
+
 		function uploadAudio(blob) {
 			var csrftoken = getCookie('csrftoken');
 			var xhttp = new XMLHttpRequest();
@@ -136,12 +138,13 @@
 			};
 			  
 			var fd = new FormData();
-			fd.append("audio", blob, 'audio_blob.wav');
+			fd.append("username","ganesha");
+			fd.append("audio", blob, recordingNameGlobal+'.wav');
 			xhttp.open("POST", "", true);
 			xhttp.setRequestHeader("X-CSRFToken", csrftoken);
 			xhttp.send(fd);  
 		}
-		
+	
 	</script>
     
   </body>

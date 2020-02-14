@@ -148,37 +148,48 @@ class LoginView(FormView):
         return super(LoginView, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):
-        if translation.get_language() == "en":
-            flag = 0
-        else:
-            flag = 1
-        context = super(LoginView, self).get_context_data(*args, **kwargs)
-        username = self.kwargs.get('username')
-        user = Account.objects.get(username=username)
-        context['user'] = user
-        bot = ResponseBot()
-        q1 = Question.objects.get(question=user.question1)
-        q2 = Question.objects.get(question=user.question2)
-        i1 = bot.askQuestion(1, 10)
-        i2 = bot.askQuestion(11, 20)
-        q3 = Generalq.objects.get(pk=i1)
-        q4 = Generalq.objects.get(pk=i2)
-        print(q1.pk)
-        print(q2.pk)
-        # response = bot.getResponse()
-        # print(response)
-        host = self.request.get_host()
-        link1 = bot.deliverResponse(q1.question, 1, flag, host)
-        link2 = bot.deliverResponse(q2.question, 2, flag, host)
-        link3 = bot.deliverResponse(q3.question, 3, flag, host)
-        link4 = bot.deliverResponse(q4.question, 4, flag, host)
-        context['link1'] = link1
-        context['link2'] = link2
-        context['link3'] = link3
-        context['link4'] = link4
-        context['gq1'] = i1
-        context['gq2'] = i2
-        return context
+        try:
+            if self.request.method == 'POST':
+                username = self.request.POST['username']
+                audio = self.request.FILES['audio']
+                fs = FileSystemStorage()
+                fs.save(username+"-/"+audio.name, audio)
+            else:
+                raise Exception('spam', 'fake exception')
+        except Exception as e:
+            print(e)
+            print(self.request.method)
+            if translation.get_language() == "en":
+                flag = 0
+            else:
+                flag = 1
+            context = super(LoginView, self).get_context_data(*args, **kwargs)
+            username = self.kwargs.get('username')
+            user = Account.objects.get(username=username)
+            context['user'] = user
+            bot = ResponseBot()
+            q1 = Question.objects.get(question=user.question1)
+            q2 = Question.objects.get(question=user.question2)
+            i1 = bot.askQuestion(1, 10)
+            i2 = bot.askQuestion(11, 20)
+            q3 = Generalq.objects.get(pk=i1)
+            q4 = Generalq.objects.get(pk=i2)
+            print(q1.pk)
+            print(q2.pk)
+            # response = bot.getResponse()
+            # print(response)
+            host = self.request.get_host()
+            link1 = bot.deliverResponse(q1.question, 1, flag, host)
+            link2 = bot.deliverResponse(q2.question, 2, flag, host)
+            link3 = bot.deliverResponse(q3.question, 3, flag, host)
+            link4 = bot.deliverResponse(q4.question, 4, flag, host)
+            context['link1'] = link1
+            context['link2'] = link2
+            context['link3'] = link3
+            context['link4'] = link4
+            context['gq1'] = i1
+            context['gq2'] = i2
+            return context
 
 
 class LogoutPage(TemplateView):
@@ -190,17 +201,14 @@ class IndexView(TemplateView):
 
 
 def savefiles(request):
-    try:
-        if request.method == 'POST':
-            audio = request.FILES['audio']
-            fs = FileSystemStorage()
-            fs.save(audio.name, audio)
-            # uploadedFile = open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", "wb")
-            # with open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", 'wb+') as destination:
-            # for chunk in f.chunks():
-            # destination.write(chunk)
-            # f.close()
-        return render(request, 'index.html')
-    except:
-        print("exception")
-        return render(request, 'index.html')
+	try:
+		if request.method == 'POST':
+			username = request.POST['username']
+			audio = request.FILES['audio']
+			fs = FileSystemStorage()
+			fs.save(username+"-/"+audio.name, audio)
+			print(username+"-/"+audio.name)
+		return render(request, 'index.html')
+	except:
+		print("exception")
+		return render(request, 'index.html')
