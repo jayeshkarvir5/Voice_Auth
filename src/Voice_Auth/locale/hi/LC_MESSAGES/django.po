@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 10:01+0530\n"
+"POT-Creation-Date: 2020-02-08 12:27+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,11 +69,11 @@ msgstr "पासवर्ड की पुष्टि कीजिये"
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:125 .\templates\registration\login.html:16
+#: .\accounts\forms.py:125 .\templates\registration\login.html:31
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:126 .\templates\registration\login.html:23
+#: .\accounts\forms.py:126 .\templates\registration\login.html:50
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
@@ -97,8 +97,7 @@ msgstr "2 अलग अलग सवाल का चयन करें"
 msgid ""
 "Username must be Alpahnumeric or contain any of the following: \". @ + -\" "
 msgstr ""
-"प्रयोक्ता नाम Alpahnumeric है या इनमें से कोई भी शामिल होना चाहिए: \"। @ + "
-"-\""
+"प्रयोक्ता नाम Alpahnumeric है या इनमें से कोई भी शामिल होना चाहिए: \"। @ + -\""
 
 #: .\accounts\templates\accounts\enter-un.html:3
 msgid "Enter-Username"
@@ -146,7 +145,7 @@ msgstr "क्या आपके पास पहले से एक खात
 #: .\accounts\templates\accounts\index.html:11
 #: .\templates\registration\login.html:3
 #: .\templates\registration\login.html:13
-#: .\templates\registration\login.html:114
+#: .\templates\registration\login.html:113
 msgid "Login"
 msgstr "लॉग इन करें"
 
@@ -200,29 +199,36 @@ msgstr "अनुवाद करना"
 msgid "Login Page"
 msgstr "लॉगिन वाला पन्ना"
 
-#: .\templates\registration\login.html:19
-#: .\templates\registration\login.html:26
-#: .\templates\registration\login.html:35
-#: .\templates\registration\login.html:42
+#: .\templates\registration\login.html:34
+#: .\templates\registration\login.html:53
+#: .\templates\registration\login.html:72
+#: .\templates\registration\login.html:92
 msgid "Your browser does not support the audio element."
 msgstr "आपका ब्राउजर में ऑडियो तत्व समर्थित नहीं है।"
 
-#: .\templates\registration\login.html:32
-msgid "Question 3"
-msgstr "प्रश्न 3"
-
 #: .\templates\registration\login.html:39
-msgid "Question 4"
-msgstr "प्रश्न 4"
-
-#: .\templates\registration\login.html:65
+#: .\templates\registration\login.html:58
 #: .\templates\registration\login.html:77
-#: .\templates\registration\login.html:88
-#: .\templates\registration\login.html:100
+#: .\templates\registration\login.html:97
 #: .\templates\registration\register.html:49
 #: .\templates\registration\register.html:61
 msgid "Record"
 msgstr "अभिलेख"
+
+#: .\templates\registration\login.html:40
+#: .\templates\registration\login.html:59
+#: .\templates\registration\login.html:78
+#: .\templates\registration\login.html:98
+msgid "Stop"
+msgstr "रुकें"
+
+#: .\templates\registration\login.html:69
+msgid "Question 3"
+msgstr "प्रश्न 3"
+
+#: .\templates\registration\login.html:89
+msgid "Question 4"
+msgstr "प्रश्न 4"
 
 #: .\templates\registration\register.html:7
 msgid "Registration Page"

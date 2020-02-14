@@ -9,7 +9,6 @@ from django.db.models import Q
 from .models import Account, Question, Generalq
 from .forms import RegisterForm, UsernameForm, UserLoginForm
 from Voice_Auth import settings
-import speech_recognition as sr
 from gtts import gTTS
 import os
 import random
@@ -21,7 +20,8 @@ from google.cloud import speech_v1p1beta1
 from google.cloud.speech_v1p1beta1 import enums
 from django.utils import translation
 
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, Storage
+from .storage import OverwriteStorage
 from django.http import HttpResponse
 
 
@@ -58,7 +58,7 @@ class ResponseBot:
             "language_code": lang_code,
             # "sample_rate_hertz": sample_rate_hertz,
             # verify audio_channel_count
-            "audio_channel_count": 2,
+            "audio_channel_count": 1,
             # "encoding": encoding,
         }
         uri = settings.MEDIA_ROOT + "/" + username + "-/a" + no_ + ".wav"
@@ -117,25 +117,6 @@ def LogoutView(request):
     return redirect('/')
 
 
-def Stt_ans(request):
-    bot = ResponseBot()
-    username = request.GET.get('username', None)
-    no_ = request.GET.get('no_', None)
-    if translation.get_language() == "en":
-        flag = 0
-    else:
-        flag = 1
-    text = bot.getResponse(username, no_, flag)
-    success = True
-    if text == "dummy":
-        success = False
-    data = {
-        'text': text,
-        'success': success
-    }
-    return JsonResponse(data)
-
-
 class LoginView(FormView):
     success_url = reverse_lazy('index')
     template_name = "registration/login.html"
@@ -189,18 +170,30 @@ class IndexView(TemplateView):
     template_name = 'accounts/index.html'
 
 
-def savefiles(request):
-    try:
-        if request.method == 'POST':
-            audio = request.FILES['audio']
-            fs = FileSystemStorage()
-            fs.save(audio.name, audio)
-            # uploadedFile = open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", "wb")
-            # with open("G:\\Workspace\\Voice_Auth\\src\\Voice_Auth\\accounts\\recording.wav", 'wb+') as destination:
-            # for chunk in f.chunks():
-            # destination.write(chunk)
-            # f.close()
-        return render(request, 'index.html')
-    except:
-        print("exception")
-        return render(request, 'index.html')
+def AudioStt(request):
+    bot = ResponseBot()
+    audio = request.FILES['audio']
+    username = request.POST.get('username', None)
+    no_ = request.POST.get('no_', None)
+    print(username)
+    print(no_)
+    success = True
+    if audio == None:
+        success = False
+        print("Audio not received")
+    else:
+        location = settings.MEDIA_ROOT + '/' + username + '-'
+        fs = OverwriteStorage(location=location)
+        fs.save(audio.name, audio)
+    if translation.get_language() == "en":
+        flag = 0
+    else:
+        flag = 1
+    text = bot.getResponse(username, no_, flag)
+    if text == "dummy":
+        success = False
+    data = {
+        'text': text,
+        'success': success
+    }
+    return JsonResponse(data)
