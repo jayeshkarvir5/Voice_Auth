@@ -64,5 +64,5 @@ python3 manage.py runserver IP_ADDRESS:PORT
 
 - [Jayesh Karvir](https://github.com/jayeshkarvir5)
 - [Jay Kanakiya](https://github.com/JayKanakiya)
-- [Ganesh Patra](https://github.com/ganesh92)
-- [Sagar Darji](https://github.com/sagar_darji)
+- [Ganesh Patra](https://github.com/92ganesh)
+- [Sagar Darji](https://github.com/sagardarji77)
