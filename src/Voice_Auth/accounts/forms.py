@@ -10,7 +10,7 @@ import time
 from Voice_Auth import settings
 from google.cloud import translate
 from django.utils.translation import ugettext_lazy as _
-from  accounts.test_speaker import identify_speaker
+from accounts.test_speaker import identify_speaker
 from accounts.train_model import createGMM
 
 translate_client = translate.Client()
@@ -25,7 +25,7 @@ class UserLoginForm(AuthenticationForm):
     answer2 = forms.CharField(label=_('Answer 2'))
     answer3 = forms.CharField(label=_('Answer 3'))
     answer4 = forms.CharField(label=_('Answer 4'))
-    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
+    password = forms.CharField(label=_('Pass Phrase'), widget=forms.PasswordInput)
     gq1 = forms.CharField(widget=forms.HiddenInput)
     gq2 = forms.CharField(widget=forms.HiddenInput)
 
@@ -88,7 +88,6 @@ class UserLoginForm(AuthenticationForm):
         if flag1 != 1 or flag2 != 1 or flag3 != 1 or flag4 != 1:
             raise forms.ValidationError(_("Incorrect response"))
 
-
         out = open(settings.MEDIA_ROOT + "/test_set.txt", "w")
         out.write(un + '-\\a1.wav\n')
         out.write(un + '-\\a2.wav\n')
@@ -97,7 +96,7 @@ class UserLoginForm(AuthenticationForm):
         out.close()
 
         res = identify_speaker(un)
-        print("Speaker: {} {}".format(res,un))
+        print("Speaker: {} {}".format(res, un))
         if res == un:
             print('Voice Matched')
         else:
@@ -121,8 +120,8 @@ class UsernameForm(forms.Form):
 
 
 class RegisterForm(forms.ModelForm):
-    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Confirm password'), widget=forms.PasswordInput)
+    password1 = forms.CharField(label=_('Pass Phrase'), widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_('Confirm Pass Phrase'), widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
@@ -171,7 +170,7 @@ class RegisterForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(_("Passwords don't match"))
+            raise forms.ValidationError(_("Pass Phrases don't match"))
         return password2
 
     def clean_question2(self):
@@ -197,5 +196,5 @@ class RegisterForm(forms.ModelForm):
         createGMM(un)
         if commit:
             user.save()
-       
+
         return user
