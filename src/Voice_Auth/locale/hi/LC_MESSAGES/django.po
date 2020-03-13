@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-08 12:27+0530\n"
+"POT-Creation-Date: 2020-03-02 11:41+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr "अंग्रेज़ी"
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: .\accounts\forms.py:23 .\accounts\forms.py:94 .\accounts\forms.py:123
+#: .\accounts\forms.py:23 .\accounts\forms.py:109 .\accounts\forms.py:138
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
-#: .\accounts\forms.py:24 .\accounts\forms.py:127
+#: .\accounts\forms.py:24 .\accounts\forms.py:142
 msgid "Answer 1"
 msgstr "उत्तर 1"
 
-#: .\accounts\forms.py:25 .\accounts\forms.py:128
+#: .\accounts\forms.py:25 .\accounts\forms.py:143
 msgid "Answer 2"
 msgstr "उत्तर 2"
 
@@ -45,9 +45,9 @@ msgstr "उत्तर 3"
 msgid "Answer 4"
 msgstr "उत्तर - 4"
 
-#: .\accounts\forms.py:28 .\accounts\forms.py:108
-msgid "Password"
-msgstr "पारण शब्द"
+#: .\accounts\forms.py:28 .\accounts\forms.py:123
+msgid "Pass Phrase"
+msgstr ""
 
 #: .\accounts\forms.py:46 .\accounts\forms.py:50
 msgid "Invalid Credentials"
@@ -58,38 +58,48 @@ msgid "Incorrect response"
 msgstr "गलत जवाब"
 
 #: .\accounts\forms.py:103
+#, fuzzy
+#| msgid "Incorrect response"
+msgid "Incorrect Voice Signature"
+msgstr "गलत जवाब"
+
+#: .\accounts\forms.py:118
 msgid "Username does not exists"
 msgstr "प्रयोक्ता नाम मौजूद नहीं करता है"
 
-#: .\accounts\forms.py:109
-msgid "Confirm password"
+#: .\accounts\forms.py:124
+#, fuzzy
+#| msgid "Confirm password"
+msgid "Confirm Pass Phrase"
 msgstr "पासवर्ड की पुष्टि कीजिये"
 
-#: .\accounts\forms.py:124
+#: .\accounts\forms.py:139
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:125 .\templates\registration\login.html:31
+#: .\accounts\forms.py:140 .\templates\registration\login.html:31
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:126 .\templates\registration\login.html:50
+#: .\accounts\forms.py:141 .\templates\registration\login.html:50
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
-#: .\accounts\forms.py:143
+#: .\accounts\forms.py:158
 msgid "Username already exists"
 msgstr "उपयोगकर्ता का नाम पहले से मौजूद है"
 
-#: .\accounts\forms.py:150
+#: .\accounts\forms.py:165
 msgid "Email is taken"
 msgstr "ईमेल में लिया जाता है"
 
-#: .\accounts\forms.py:158
-msgid "Passwords don't match"
+#: .\accounts\forms.py:173
+#, fuzzy
+#| msgid "Passwords don't match"
+msgid "Pass Phrases don't match"
 msgstr "पासवर्ड मेल नहीं खाते"
 
-#: .\accounts\forms.py:167
+#: .\accounts\forms.py:182
 msgid "Please select 2 different questions"
 msgstr "2 अलग अलग सवाल का चयन करें"
 
@@ -129,7 +139,7 @@ msgid "here"
 msgstr "यहाँ"
 
 #: .\accounts\templates\accounts\enter-un.html:37
-#: .\templates\registration\register.html:83
+#: .\templates\registration\register.html:97
 msgid "Submit"
 msgstr "प्रस्तुत"
 
@@ -145,7 +155,7 @@ msgstr "क्या आपके पास पहले से एक खात
 #: .\accounts\templates\accounts\index.html:11
 #: .\templates\registration\login.html:3
 #: .\templates\registration\login.html:13
-#: .\templates\registration\login.html:113
+#: .\templates\registration\login.html:117
 msgid "Login"
 msgstr "लॉग इन करें"
 
@@ -210,8 +220,11 @@ msgstr "आपका ब्राउजर में ऑडियो तत्�
 #: .\templates\registration\login.html:58
 #: .\templates\registration\login.html:77
 #: .\templates\registration\login.html:97
-#: .\templates\registration\register.html:49
-#: .\templates\registration\register.html:61
+#: .\templates\registration\login.html:112
+#: .\templates\registration\register.html:50
+#: .\templates\registration\register.html:65
+#: .\templates\registration\register.html:79
+#: .\templates\registration\register.html:87
 msgid "Record"
 msgstr "अभिलेख"
 
@@ -219,6 +232,11 @@ msgstr "अभिलेख"
 #: .\templates\registration\login.html:59
 #: .\templates\registration\login.html:78
 #: .\templates\registration\login.html:98
+#: .\templates\registration\login.html:113
+#: .\templates\registration\register.html:51
+#: .\templates\registration\register.html:66
+#: .\templates\registration\register.html:80
+#: .\templates\registration\register.html:88
 msgid "Stop"
 msgstr "रुकें"
 
@@ -233,3 +251,6 @@ msgstr "प्रश्न 4"
 #: .\templates\registration\register.html:7
 msgid "Registration Page"
 msgstr "पंजीकरण पृष्ठ"
+
+#~ msgid "Password"
+#~ msgstr "पारण शब्द"

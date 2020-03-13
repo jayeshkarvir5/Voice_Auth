@@ -107,7 +107,11 @@
        </div>
        <div class="form-group iclass">
            <label class="iclass" for="pw">{{ form.password.label_tag }}</label>
-           <input class="form-control" id="pw" maxlength="30" name="{{ form.password.html_name }}" placeholder=" " type="password" />
+           <input class="form-control" id="pw" maxlength="30" name="{{ form.password.html_name }}" placeholder=" " type="text" readonly/><br><!--provide value='password' for login-->
+           <div id="controls">
+               <button class="btn submit-btn mr-2" type="button"  id="start-btnpw"  name="button">{% trans 'Record' %}</button>
+               <button class="btn submit-btn" type="button"  id="stop-btnpw"  name="button" disabled>{% trans 'Stop' %}</button>
+          </div>
        </div>
        <div class="form-group text-center">
            <button type="submit" class="btn submit-btn">{% trans 'Login' %}</button>
