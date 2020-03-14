@@ -24,6 +24,8 @@ $('#start-btn1').on('click', function(e){
     recordButton.disabled = true;
     recordButton = document.getElementById("start-btncpw");
     recordButton.disabled = true;
+    recordButton = document.getElementById("start-btnpg");
+    recordButton.disabled = true;
     recordButton = document.getElementById("start-btn1");
     stopButton = document.getElementById("stop-btn1");
     Textbox = $('#ans1');
@@ -38,6 +40,8 @@ $('#start-btn2').on('click', function(e){
     recordButton = document.getElementById("start-btnpw");
     recordButton.disabled = true;
     recordButton = document.getElementById("start-btncpw");
+    recordButton.disabled = true;
+    recordButton = document.getElementById("start-btnpg");
     recordButton.disabled = true;
     recordButton = document.getElementById("start-btn2");
     stopButton = document.getElementById("stop-btn2");
@@ -54,6 +58,8 @@ $('#start-btnpw').on('click', function(e){
     recordButton.disabled = true;
     recordButton = document.getElementById("start-btn2");
     recordButton.disabled = true;
+    recordButton = document.getElementById("start-btnpg");
+    recordButton.disabled = true;
     recordButton = document.getElementById("start-btnpw");
     stopButton = document.getElementById("stop-btnpw");
     Textbox = $('#pw1');
@@ -69,6 +75,8 @@ $('#start-btncpw').on('click', function(e){
     recordButton.disabled = true;
     recordButton = document.getElementById("start-btn2");
     recordButton.disabled = true;
+    recordButton = document.getElementById("start-btnpg");
+    recordButton.disabled = true;
     recordButton = document.getElementById("start-btncpw");
     stopButton = document.getElementById("stop-btncpw");
     Textbox = $('#pw2');
@@ -76,6 +84,27 @@ $('#start-btncpw').on('click', function(e){
     startRecording();
     stopButton.addEventListener("click", stopRecording);
 });
+
+$('#start-btnpg').on('click', function(e){
+    flag = '5';
+    recordButton = document.getElementById("start-btn1");
+    recordButton.disabled = true;
+    recordButton = document.getElementById("start-btncpw");
+    recordButton.disabled = true;
+    recordButton = document.getElementById("start-btn2");
+    recordButton.disabled = true;
+    recordButton = document.getElementById("start-btnpw");
+    recordButton.disabled = true;
+
+    recordButton = document.getElementById("start-btnpg");
+    stopButton = document.getElementById("stop-btnpg");
+    // Textbox = $('#pg');
+    //add events to those 2 buttons
+    startRecording();
+    stopButton.addEventListener("click", stopRecording);
+});
+
+
 
 function startRecording() {
     console.log("recordButton clicked");
@@ -169,5 +198,7 @@ function uploadAudio(blob) {
     recordButton = document.getElementById("start-btnpw");
     recordButton.disabled = false;
     recordButton = document.getElementById("start-btncpw");
+    recordButton.disabled = false;
+    recordButton = document.getElementById("start-btnpg");
     recordButton.disabled = false;
 }
