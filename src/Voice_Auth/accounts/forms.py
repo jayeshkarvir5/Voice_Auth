@@ -124,7 +124,7 @@ class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(label=_('Confirm Pass Phrase'), widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
     paragraph = forms.CharField(label=_('Paragraph'))
-    p_text = "Throw out the bottles and boxes of drugs in your house. A new theory suggests that medicine could be bad for your health, which should at least come as good news to people who cannot afford to buy expensive medicine. However, it is a blow to the medicine industry, and an even bigger blow to our confidence in the progress of science. "
+    p_text = _('Throw out the bottles and boxes of drugs in your house. A new theory suggests that medicine could be bad for your health, which should at least come as good news to people who cannot afford to buy expensive medicine. However, it is a blow to the medicine industry, and an even bigger blow to our confidence in the progress of science.')
 
     class Meta:
         model = Account
