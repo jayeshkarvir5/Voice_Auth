@@ -93,6 +93,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a2.wav\n')
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
+        out.write(un + '-\\a4.wav\n')
         out.close()
 
         res = identify_speaker(un)
@@ -123,7 +124,7 @@ class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(label=_('Pass Phrase'), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm Pass Phrase'), widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
-    paragraph = forms.CharField(label=_('Paragraph'))
+    paragraph = _('Paragraph')
     p_text = _('Throw out the bottles and boxes of drugs in your house. A new theory suggests that medicine could be bad for your health, which should at least come as good news to people who cannot afford to buy expensive medicine. However, it is a blow to the medicine industry, and an even bigger blow to our confidence in the progress of science.')
 
     class Meta:
