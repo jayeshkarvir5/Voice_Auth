@@ -3,3 +3,5 @@ Voice_Auth/cred.json
 .vscode
 virtualEnvironment
 Voice_Auth/media
+Voice_Auth/accounts/__pycache__
+src/Voice_Auth/accounts/migrations/__pycache__
