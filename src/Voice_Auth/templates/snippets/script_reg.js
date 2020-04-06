@@ -98,7 +98,8 @@ $('#start-btnpg').on('click', function(e){
 
     recordButton = document.getElementById("start-btnpg");
     stopButton = document.getElementById("stop-btnpg");
-    // Textbox = $('#pg');
+    Textbox = null;
+    //Textbox = $('#pg');
     //add events to those 2 buttons
     startRecording();
     stopButton.addEventListener("click", stopRecording);
@@ -184,7 +185,9 @@ function uploadAudio(blob) {
         contentType: false,
         success: function (data) {
           if (data.success) {
-            Textbox.val(data.text);
+            if(Textbox!=null){
+                Textbox.val(data.text);
+            }
             alert('Saved audio.');
           }else{
              alert("Could not recognise");
