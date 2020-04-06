@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-02 11:41+0530\n"
+"POT-Creation-Date: 2020-04-05 13:07+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr "अंग्रेज़ी"
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: .\accounts\forms.py:23 .\accounts\forms.py:109 .\accounts\forms.py:138
+#: .\accounts\forms.py:23 .\accounts\forms.py:109 .\accounts\forms.py:140
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
-#: .\accounts\forms.py:24 .\accounts\forms.py:142
+#: .\accounts\forms.py:24 .\accounts\forms.py:144
 msgid "Answer 1"
 msgstr "उत्तर 1"
 
-#: .\accounts\forms.py:25 .\accounts\forms.py:143
+#: .\accounts\forms.py:25 .\accounts\forms.py:145
 msgid "Answer 2"
 msgstr "उत्तर 2"
 
@@ -47,7 +47,7 @@ msgstr "उत्तर - 4"
 
 #: .\accounts\forms.py:28 .\accounts\forms.py:123
 msgid "Pass Phrase"
-msgstr ""
+msgstr "पास वाक्यांश:"
 
 #: .\accounts\forms.py:46 .\accounts\forms.py:50
 msgid "Invalid Credentials"
@@ -68,38 +68,53 @@ msgid "Username does not exists"
 msgstr "प्रयोक्ता नाम मौजूद नहीं करता है"
 
 #: .\accounts\forms.py:124
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Confirm Pass Phrase"
-msgstr "पासवर्ड की पुष्टि कीजिये"
+msgstr "पपास वाक्यांश की पुष्टि करेंे"
 
-#: .\accounts\forms.py:139
+#: .\accounts\forms.py:126
+msgid "Paragraph"
+msgstr "अनुच्छेद"
+
+#: .\accounts\forms.py:127
+msgid ""
+"Throw out the bottles and boxes of drugs in your house. A new theory "
+"suggests that medicine could be bad for your health, which should at least "
+"come as good news to people who cannot afford to buy expensive medicine. "
+"However, it is a blow to the medicine industry, and an even bigger blow to "
+"our confidence in the progress of science."
+msgstr ""
+"अपने घर में ड्रग्स की बोतलें और बक्से बाहर फेंक दें। एक नया सिद्धांत बताता है कि दवा आपके "
+"स्वास्थ्य के लिए खराब हो सकती है, जिसे कम से कम उन लोगों को अच्छी खबर के रूप में आना "
+"चाहिए जो महंगी दवा खरीदने का जोखिम नहीं उठा सकते हैं। हालांकि, यह दवा उद्योग के लिए "
+"एक झटका है, और विज्ञान की प्रगति में हमारे विश्वास के लिए एक बड़ा झटका है।"
+
+#: .\accounts\forms.py:141
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:140 .\templates\registration\login.html:31
+#: .\accounts\forms.py:142 .\templates\registration\login.html:31
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:141 .\templates\registration\login.html:50
+#: .\accounts\forms.py:143 .\templates\registration\login.html:50
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
-#: .\accounts\forms.py:158
+#: .\accounts\forms.py:160
 msgid "Username already exists"
 msgstr "उपयोगकर्ता का नाम पहले से मौजूद है"
 
-#: .\accounts\forms.py:165
+#: .\accounts\forms.py:167
 msgid "Email is taken"
 msgstr "ईमेल में लिया जाता है"
 
-#: .\accounts\forms.py:173
+#: .\accounts\forms.py:175
 #, fuzzy
 #| msgid "Passwords don't match"
 msgid "Pass Phrases don't match"
 msgstr "पासवर्ड मेल नहीं खाते"
 
-#: .\accounts\forms.py:182
+#: .\accounts\forms.py:184
 msgid "Please select 2 different questions"
 msgstr "2 अलग अलग सवाल का चयन करें"
 
@@ -139,7 +154,7 @@ msgid "here"
 msgstr "यहाँ"
 
 #: .\accounts\templates\accounts\enter-un.html:37
-#: .\templates\registration\register.html:97
+#: .\templates\registration\register.html:125
 msgid "Submit"
 msgstr "प्रस्तुत"
 
@@ -221,10 +236,11 @@ msgstr "आपका ब्राउजर में ऑडियो तत्�
 #: .\templates\registration\login.html:77
 #: .\templates\registration\login.html:97
 #: .\templates\registration\login.html:112
-#: .\templates\registration\register.html:50
-#: .\templates\registration\register.html:65
-#: .\templates\registration\register.html:79
-#: .\templates\registration\register.html:87
+#: .\templates\registration\register.html:54
+#: .\templates\registration\register.html:72
+#: .\templates\registration\register.html:89
+#: .\templates\registration\register.html:100
+#: .\templates\registration\register.html:118
 msgid "Record"
 msgstr "अभिलेख"
 
@@ -233,10 +249,11 @@ msgstr "अभिलेख"
 #: .\templates\registration\login.html:78
 #: .\templates\registration\login.html:98
 #: .\templates\registration\login.html:113
-#: .\templates\registration\register.html:51
-#: .\templates\registration\register.html:66
-#: .\templates\registration\register.html:80
-#: .\templates\registration\register.html:88
+#: .\templates\registration\register.html:56
+#: .\templates\registration\register.html:74
+#: .\templates\registration\register.html:91
+#: .\templates\registration\register.html:102
+#: .\templates\registration\register.html:120
 msgid "Stop"
 msgstr "रुकें"
 
@@ -251,6 +268,9 @@ msgstr "प्रश्न 4"
 #: .\templates\registration\register.html:7
 msgid "Registration Page"
 msgstr "पंजीकरण पृष्ठ"
+
+#~ msgid "Paragraph:"
+#~ msgstr "अनुच्छेद:"
 
 #~ msgid "Password"
 #~ msgstr "पारण शब्द"
