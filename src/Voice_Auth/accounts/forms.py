@@ -93,7 +93,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a2.wav\n')
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
-        out.write(un + '-\\a4.wav\n')
+        out.write(un + '-\\a5.wav\n')
         out.close()
 
         res = identify_speaker(un)
