@@ -213,7 +213,7 @@ class RegisterForm(forms.ModelForm):
         out.write(un + '-\\a5.wav\n')
         out.write(un + '-\\a6.wav\n')
         out.write(un + '-\\a7.wav\n')
-
+        out.close()
         createGMM(un)
         if commit:
             user.save()
