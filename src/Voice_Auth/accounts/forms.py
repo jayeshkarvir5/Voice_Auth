@@ -70,8 +70,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
-        out.write(un + '-\\a6.wav\n')
-        out.write(un + '-\\a7.wav\n')
+       
         out.close()
 
         res = identify_speaker(un)
@@ -79,7 +78,7 @@ class UserLoginForm(AuthenticationForm):
         if res == un:
             print('Voice Matched')
         elif res == 'ga2020':
-            raise forms.ValidationError(_("User is probably not a human. Please try again"))
+            raise forms.ValidationError(_("User is probably not a uman. Please try again"))
         else:
             raise forms.ValidationError(_("Incorrect Voice Signature"))
         # Translate to English if Hindi Output
@@ -212,6 +211,8 @@ class RegisterForm(forms.ModelForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
+        out.write(un + '-\\a6.wav\n')
+        out.write(un + '-\\a7.wav\n')
 
         createGMM(un)
         if commit:
