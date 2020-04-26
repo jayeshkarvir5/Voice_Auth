@@ -130,8 +130,14 @@ class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(label=_('Confirm Pass Phrase'), widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
     paragraph = _('Paragraph')
-    p_text = _('Throw out the bottles and boxes of drugs in your house. A new theory suggests that medicine could be bad for your health, which should at least come as good news to people who cannot afford to buy expensive medicine. However, it is a blow to the medicine industry, and an even bigger blow to our confidence in the progress of science.')
-
+    s1_label = _('Sentence 1')
+    s2_label = _('Sentence 2')
+    s3_label = _('Sentence 3')
+    
+    s1 = _('What joy there is in living.')
+    s2 = _('The bark of the tree was shiny and dark.')
+    s3 = _('A king ruled the state in the early days.')
+    
     class Meta:
         model = Account
         fields = [

@@ -2,16 +2,17 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 13:07+0530\n"
+"POT-Creation-Date: 2020-04-26 17:44+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,15 +26,15 @@ msgstr "अंग्रेज़ी"
 msgid "Hindi"
 msgstr "हिंदी"
 
-#: .\accounts\forms.py:23 .\accounts\forms.py:109 .\accounts\forms.py:140
+#: .\accounts\forms.py:23 .\accounts\forms.py:115 .\accounts\forms.py:152
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
-#: .\accounts\forms.py:24 .\accounts\forms.py:144
+#: .\accounts\forms.py:24 .\accounts\forms.py:156
 msgid "Answer 1"
 msgstr "उत्तर 1"
 
-#: .\accounts\forms.py:25 .\accounts\forms.py:145
+#: .\accounts\forms.py:25 .\accounts\forms.py:157
 msgid "Answer 2"
 msgstr "उत्तर 2"
 
@@ -45,7 +46,7 @@ msgstr "उत्तर 3"
 msgid "Answer 4"
 msgstr "उत्तर - 4"
 
-#: .\accounts\forms.py:28 .\accounts\forms.py:123
+#: .\accounts\forms.py:28 .\accounts\forms.py:129
 msgid "Pass Phrase"
 msgstr "पास वाक्यांश:"
 
@@ -53,68 +54,83 @@ msgstr "पास वाक्यांश:"
 msgid "Invalid Credentials"
 msgstr "अवैध प्रत्यय पत्र"
 
-#: .\accounts\forms.py:65 .\accounts\forms.py:89
+#: .\accounts\forms.py:65 .\accounts\forms.py:106
 msgid "Incorrect response"
 msgstr "गलत जवाब"
 
-#: .\accounts\forms.py:103
+#: .\accounts\forms.py:80
+msgid "User is probably not a human. Please try again"
+msgstr "उपयोगकर्ता शायद मानव नहीं है। कृपया पुन: प्रयास करें"
+
+#: .\accounts\forms.py:82
 #, fuzzy
 #| msgid "Incorrect response"
 msgid "Incorrect Voice Signature"
 msgstr "गलत जवाब"
 
-#: .\accounts\forms.py:118
+#: .\accounts\forms.py:124
 msgid "Username does not exists"
 msgstr "प्रयोक्ता नाम मौजूद नहीं करता है"
 
-#: .\accounts\forms.py:124
+#: .\accounts\forms.py:130
 msgid "Confirm Pass Phrase"
 msgstr "पपास वाक्यांश की पुष्टि करेंे"
 
-#: .\accounts\forms.py:126
+#: .\accounts\forms.py:132
 msgid "Paragraph"
 msgstr "अनुच्छेद"
 
-#: .\accounts\forms.py:127
-msgid ""
-"Throw out the bottles and boxes of drugs in your house. A new theory "
-"suggests that medicine could be bad for your health, which should at least "
-"come as good news to people who cannot afford to buy expensive medicine. "
-"However, it is a blow to the medicine industry, and an even bigger blow to "
-"our confidence in the progress of science."
-msgstr ""
-"अपने घर में ड्रग्स की बोतलें और बक्से बाहर फेंक दें। एक नया सिद्धांत बताता है कि दवा आपके "
-"स्वास्थ्य के लिए खराब हो सकती है, जिसे कम से कम उन लोगों को अच्छी खबर के रूप में आना "
-"चाहिए जो महंगी दवा खरीदने का जोखिम नहीं उठा सकते हैं। हालांकि, यह दवा उद्योग के लिए "
-"एक झटका है, और विज्ञान की प्रगति में हमारे विश्वास के लिए एक बड़ा झटका है।"
+#: .\accounts\forms.py:133
+msgid "Sentence 1"
+msgstr "वाक्य 1"
 
-#: .\accounts\forms.py:141
+#: .\accounts\forms.py:134
+msgid "Sentence 2"
+msgstr "वाक्य 2"
+
+#: .\accounts\forms.py:135
+msgid "Sentence 3"
+msgstr "वाक्य 3"
+
+#: .\accounts\forms.py:137
+msgid "What joy there is in living."
+msgstr "जीने में क्या आनंद है।"
+
+#: .\accounts\forms.py:138
+msgid "The bark of the tree was shiny and dark."
+msgstr "पेड़ की छाल चमकदार और गहरी थी।"
+
+#: .\accounts\forms.py:139
+msgid "A king ruled the state in the early days."
+msgstr "एक राजा ने शुरुआती दिनों में राज्य पर शासन किया।"
+
+#: .\accounts\forms.py:153
 msgid "Email"
 msgstr "ईमेल"
 
-#: .\accounts\forms.py:142 .\templates\registration\login.html:31
+#: .\accounts\forms.py:154 .\templates\registration\login.html:31
 msgid "Question 1"
 msgstr "प्रश्न 1"
 
-#: .\accounts\forms.py:143 .\templates\registration\login.html:50
+#: .\accounts\forms.py:155 .\templates\registration\login.html:50
 msgid "Question 2"
 msgstr "प्रश्न 2"
 
-#: .\accounts\forms.py:160
+#: .\accounts\forms.py:172
 msgid "Username already exists"
 msgstr "उपयोगकर्ता का नाम पहले से मौजूद है"
 
-#: .\accounts\forms.py:167
+#: .\accounts\forms.py:179
 msgid "Email is taken"
 msgstr "ईमेल में लिया जाता है"
 
-#: .\accounts\forms.py:175
+#: .\accounts\forms.py:187
 #, fuzzy
 #| msgid "Passwords don't match"
 msgid "Pass Phrases don't match"
 msgstr "पासवर्ड मेल नहीं खाते"
 
-#: .\accounts\forms.py:184
+#: .\accounts\forms.py:196
 msgid "Please select 2 different questions"
 msgstr "2 अलग अलग सवाल का चयन करें"
 
@@ -154,7 +170,7 @@ msgid "here"
 msgstr "यहाँ"
 
 #: .\accounts\templates\accounts\enter-un.html:37
-#: .\templates\registration\register.html:125
+#: .\templates\registration\register.html:146
 msgid "Submit"
 msgstr "प्रस्तुत"
 
@@ -241,6 +257,8 @@ msgstr "आपका ब्राउजर में ऑडियो तत्�
 #: .\templates\registration\register.html:89
 #: .\templates\registration\register.html:100
 #: .\templates\registration\register.html:118
+#: .\templates\registration\register.html:129
+#: .\templates\registration\register.html:140
 msgid "Record"
 msgstr "अभिलेख"
 
@@ -254,6 +272,8 @@ msgstr "अभिलेख"
 #: .\templates\registration\register.html:91
 #: .\templates\registration\register.html:102
 #: .\templates\registration\register.html:120
+#: .\templates\registration\register.html:131
+#: .\templates\registration\register.html:142
 msgid "Stop"
 msgstr "रुकें"
 
@@ -268,6 +288,18 @@ msgstr "प्रश्न 4"
 #: .\templates\registration\register.html:7
 msgid "Registration Page"
 msgstr "पंजीकरण पृष्ठ"
+
+#~ msgid ""
+#~ "Throw out the bottles and boxes of drugs in your house. A new theory "
+#~ "suggests that medicine could be bad for your health, which should at "
+#~ "least come as good news to people who cannot afford to buy expensive "
+#~ "medicine. However, it is a blow to the medicine industry, and an even "
+#~ "bigger blow to our confidence in the progress of science."
+#~ msgstr ""
+#~ "अपने घर में ड्रग्स की बोतलें और बक्से बाहर फेंक दें। एक नया सिद्धांत बताता है कि दवा आपके "
+#~ "स्वास्थ्य के लिए खराब हो सकती है, जिसे कम से कम उन लोगों को अच्छी खबर के रूप में आना "
+#~ "चाहिए जो महंगी दवा खरीदने का जोखिम नहीं उठा सकते हैं। हालांकि, यह दवा उद्योग के "
+#~ "लिए एक झटका है, और विज्ञान की प्रगति में हमारे विश्वास के लिए एक बड़ा झटका है।"
 
 #~ msgid "Paragraph:"
 #~ msgstr "अनुच्छेद:"

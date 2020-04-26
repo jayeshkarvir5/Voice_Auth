@@ -110,8 +110,8 @@
             {% endif %}
 
             <div class="form-group iclass">
-                <label class="iclass" for="pg">{{ form.paragraph }}</label>
-                <p>{{ form.p_text }}</p>
+                <label class="iclass" for="pg">{{ form.s1_label }}</label>
+                <p>{{ form.s1 }}</p>
                 <br>
                 <div class="mb-5" id="controls">
                     <button class="btn submit-btn mr-2" type="button" id="start-btnpg"
@@ -120,7 +120,28 @@
                         disabled>{% trans 'Stop' %}</button>
                 </div>
             </div>
-
+            <div class="form-group iclass">
+                <label class="iclass" for="pg">{{ form.s2_label }}</label>
+                <p>{{ form.s2 }}</p>
+                <br>
+                <div class="mb-5" id="controls">
+                    <button class="btn submit-btn mr-2" type="button" id="start-btnpg"
+                        name="button">{% trans 'Record' %}</button>
+                    <button class="btn submit-btn" type="button" id="stop-btnpg" name="button"
+                        disabled>{% trans 'Stop' %}</button>
+                </div>
+            </div>
+            <div class="form-group iclass">
+                <label class="iclass" for="pg">{{ form.s3_label }}</label>
+                <p>{{ form.s3 }}</p>
+                <br>
+                <div class="mb-5" id="controls">
+                    <button class="btn submit-btn mr-2" type="button" id="start-btnpg"
+                        name="button">{% trans 'Record' %}</button>
+                    <button class="btn submit-btn" type="button" id="stop-btnpg" name="button"
+                        disabled>{% trans 'Stop' %}</button>
+                </div>
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn submit-btn">{%trans 'Submit' %}</button>
             </div>
