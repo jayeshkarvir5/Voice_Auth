@@ -63,6 +63,25 @@ class UserLoginForm(AuthenticationForm):
         print(q4.answer)
         if a1 == None or a2 == None or a3 == None or a4 == None:
             raise forms.ValidationError(_("Incorrect response"))
+
+        out = open(settings.MEDIA_ROOT + "/test_set.txt", "w")
+        out.write(un + '-\\a1.wav\n')
+        out.write(un + '-\\a2.wav\n')
+        out.write(un + '-\\a3.wav\n')
+        out.write(un + '-\\a4.wav\n')
+        out.write(un + '-\\a5.wav\n')
+        out.write(un + '-\\a6.wav\n')
+        out.write(un + '-\\a7.wav\n')
+        out.close()
+
+        res = identify_speaker(un)
+        print("Speaker: {} {}".format(res, un))
+        if res == un:
+            print('Voice Matched')
+        elif res == 'ga2020':
+            raise forms.ValidationError(_("User is probably not a human. Please try again"))
+        else:
+            raise forms.ValidationError(_("Incorrect Voice Signature"))
         # Translate to English if Hindi Output
         if flag == 1:
             translation1 = translate_client.translate(a1, target_language='en')
@@ -88,20 +107,8 @@ class UserLoginForm(AuthenticationForm):
         if flag1 != 1 or flag2 != 1 or flag3 != 1 or flag4 != 1:
             raise forms.ValidationError(_("Incorrect response"))
 
-        out = open(settings.MEDIA_ROOT + "/test_set.txt", "w")
-        out.write(un + '-\\a1.wav\n')
-        out.write(un + '-\\a2.wav\n')
-        out.write(un + '-\\a3.wav\n')
-        out.write(un + '-\\a4.wav\n')
-        out.write(un + '-\\a5.wav\n')
-        out.close()
 
-        res = identify_speaker(un)
-        print("Speaker: {} {}".format(res, un))
-        if res == un:
-            print('Voice Matched')
-        else:
-            raise forms.ValidationError(_("Incorrect Voice Signature"))
+        
 
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
@@ -125,8 +132,14 @@ class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(label=_('Confirm Pass Phrase'), widget=forms.PasswordInput)
     # password = forms.CharField(widget=forms.PasswordInput)
     paragraph = _('Paragraph')
-    p_text = _('Throw out the bottles and boxes of drugs in your house. A new theory suggests that medicine could be bad for your health, which should at least come as good news to people who cannot afford to buy expensive medicine. However, it is a blow to the medicine industry, and an even bigger blow to our confidence in the progress of science.')
-
+    s1_label = _('Sentence 1')
+    s2_label = _('Sentence 2')
+    s3_label = _('Sentence 3')
+    
+    s1 = _('What joy there is in living.')
+    s2 = _('The bark of the tree was shiny and dark.')
+    s3 = _('A king ruled the state in the early days.')
+    
     class Meta:
         model = Account
         fields = [
@@ -199,6 +212,8 @@ class RegisterForm(forms.ModelForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
+        out.write(un + '-\\a6.wav\n')
+        out.write(un + '-\\a7.wav\n')
         createGMM(un)
         if commit:
             user.save()

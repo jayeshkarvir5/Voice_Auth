@@ -110,17 +110,38 @@
             {% endif %}
 
             <div class="form-group iclass">
-                <label class="iclass" for="pg">{{ form.paragraph }}</label>
-                <p>{{ form.p_text }}</p>
+                <label class="iclass" for="pg">{{ form.s1_label }}</label>
+                <p>{{ form.s1 }}</p>
                 <br>
                 <div class="mb-5" id="controls">
-                    <button class="btn submit-btn mr-2" type="button" id="start-btnpg"
+                    <button class="btn submit-btn mr-2" type="button" id="start-btns1"
                         name="button">{% trans 'Record' %}</button>
-                    <button class="btn submit-btn" type="button" id="stop-btnpg" name="button"
+                    <button class="btn submit-btn" type="button" id="stop-btns1" name="button"
                         disabled>{% trans 'Stop' %}</button>
                 </div>
             </div>
-
+            <div class="form-group iclass">
+                <label class="iclass" for="pg">{{ form.s2_label }}</label>
+                <p>{{ form.s2 }}</p>
+                <br>
+                <div class="mb-5" id="controls">
+                    <button class="btn submit-btn mr-2" type="button" id="start-btns2"
+                        name="button">{% trans 'Record' %}</button>
+                    <button class="btn submit-btn" type="button" id="stop-btns2" name="button"
+                        disabled>{% trans 'Stop' %}</button>
+                </div>
+            </div>
+            <div class="form-group iclass">
+                <label class="iclass" for="pg">{{ form.s3_label }}</label>
+                <p>{{ form.s3 }}</p>
+                <br>
+                <div class="mb-5" id="controls">
+                    <button class="btn submit-btn mr-2" type="button" id="start-btns3"
+                        name="button">{% trans 'Record' %}</button>
+                    <button class="btn submit-btn" type="button" id="stop-btns3" name="button"
+                        disabled>{% trans 'Stop' %}</button>
+                </div>
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn submit-btn">{%trans 'Submit' %}</button>
             </div>
