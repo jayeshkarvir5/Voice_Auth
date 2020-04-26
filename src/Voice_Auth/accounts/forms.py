@@ -70,8 +70,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
-        out.write(un + '-\\a6.wav\n')
-        out.write(un + '-\\a7.wav\n')
+       
         out.close()
 
         res = identify_speaker(un)
@@ -212,7 +211,8 @@ class RegisterForm(forms.ModelForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
-
+		out.write(un + '-\\a6.wav\n')
+        out.write(un + '-\\a7.wav\n')
         createGMM(un)
         if commit:
             user.save()
