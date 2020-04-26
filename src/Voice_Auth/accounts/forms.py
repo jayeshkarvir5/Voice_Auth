@@ -70,7 +70,7 @@ class UserLoginForm(AuthenticationForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
-       
+
         out.close()
 
         res = identify_speaker(un)
@@ -78,7 +78,7 @@ class UserLoginForm(AuthenticationForm):
         if res == un:
             print('Voice Matched')
         elif res == 'ga2020':
-            raise forms.ValidationError(_("User is probably not a human. Please try again"))
+            raise forms.ValidationError(_("User is probably not a uman. Please try again"))
         else:
             raise forms.ValidationError(_("Incorrect Voice Signature"))
         # Translate to English if Hindi Output
@@ -107,7 +107,7 @@ class UserLoginForm(AuthenticationForm):
             raise forms.ValidationError(_("Incorrect response"))
 
 
-        
+
 
         return super(UserLoginForm, self).clean(*args, **kwargs)
 
@@ -134,11 +134,11 @@ class RegisterForm(forms.ModelForm):
     s1_label = _('Sentence 1')
     s2_label = _('Sentence 2')
     s3_label = _('Sentence 3')
-    
+
     s1 = _('What joy there is in living.')
     s2 = _('The bark of the tree was shiny and dark.')
     s3 = _('A king ruled the state in the early days.')
-    
+
     class Meta:
         model = Account
         fields = [
@@ -211,8 +211,9 @@ class RegisterForm(forms.ModelForm):
         out.write(un + '-\\a3.wav\n')
         out.write(un + '-\\a4.wav\n')
         out.write(un + '-\\a5.wav\n')
-		out.write(un + '-\\a6.wav\n')
+        out.write(un + '-\\a6.wav\n')
         out.write(un + '-\\a7.wav\n')
+
         createGMM(un)
         if commit:
             user.save()

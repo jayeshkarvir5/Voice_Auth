@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-ganesh-\a1.wav
-ganesh-\a2.wav
-ganesh-\a3.wav
-ganesh-\a4.wav
-ganesh-\a5.wav
-ganesh-\a6.wav
-ganesh-\a7.wav
-=======
-jjkk11-\a1.wav
-jjkk11-\a2.wav
-jjkk11-\a3.wav
-jjkk11-\a4.wav
-jjkk11-\a5.wav
-jjkk11-\a6.wav
-jjkk11-\a7.wav
->>>>>>> 5ebd811fee937303210083082acda4f65ce4cd4e
+ganesh2-\a1.wav
+ganesh2-\a2.wav
+ganesh2-\a3.wav
+ganesh2-\a4.wav
+ganesh2-\a5.wav
