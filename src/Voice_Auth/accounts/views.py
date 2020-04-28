@@ -114,7 +114,7 @@ class UnView(FormView):
 
 def LogoutView(request):
     logout(request)
-    return redirect('/')
+    return redirect(reverse_lazy('index'))
 
 
 class LoginView(FormView):

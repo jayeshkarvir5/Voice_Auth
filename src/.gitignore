@@ -5,7 +5,7 @@ virtualEnvironment
 Voice_Auth/media
 Voice_Auth/accounts/__pycache__
 Voice_Auth/Voice_Auth/__pycache__
-src/Voice_Auth/accounts/migrations/__pycache__
+Voice_Auth/accounts/migrations
 Voice_Auth/db.sqlite3
 Voice_Auth/media/output1.mp3
 Voice_Auth/media/output2.mp3
